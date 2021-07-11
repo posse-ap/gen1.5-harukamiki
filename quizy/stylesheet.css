@@ -1,0 +1,129 @@
+html{
+    min-width:300px;
+    scroll-behavior: smooth;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body{
+    margin-left: auto;
+    margin-right:auto;
+    /* padding:0;
+    border:0; */
+    max-width: 1200px;
+}
+
+.monnme{
+    margin: 0 auto;
+    max-width: 800px;
+    width: 90%;
+}
+
+
+.title{
+    font-size:19px;
+    margin:0;
+    margin-bottom: 10px;
+}
+
+h2{
+    display: inline-block;
+    font-size: 17px;
+    line-height: 20px;
+   background: linear-gradient(transparent 70%, #F7FE4D 50%);
+}
+
+img{
+    display: block;
+    margin:0 auto;
+    max-width:100%;
+    width: 80vw; 
+}
+
+p{
+    margin: 5px;
+    display: block;
+}
+
+/* ------------------- BASE choices visuals -----------------------------*/
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    box-shadow: 0 3px 2px -2px #e6e6e6;
+    border: 1px solid #ebebeb;
+    width: center; 
+    margin:10px 0;
+    padding: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 17px;
+    display: block;
+}
+
+
+/* -------CLICKED choices visuals--------------------------- */
+
+
+/*------------------------- Button change---------------------- */
+.wrongButton{
+    background:#FD6647;
+    color: white; 
+}
+
+.successButton{
+    background: #08B3F0;
+    color: white;
+}
+
+.cantclick{
+    pointer-events: none;
+}
+
+/* ------------------------ answer reveal --------------------- */
+
+.answerBox{
+    box-shadow: 0 3px 2px -2px #e6e6e6;
+    border:1px solid #ebebeb;
+    width: center; 
+    margin:0;
+    padding: 10px;
+}
+
+
+#seikai{
+    font-weight: 600;
+    display: inline-block;
+}
+
+.successBar{
+    background: linear-gradient(transparent 70%,#08B3F0 50%);
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.wrongBar{
+    background: linear-gradient(transparent 70%,#FD6647 50%);
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+
+.seikai{
+    margin-bottom: 10px;
+    margin-top:0;
+    font-weight: 600;
+    /* background: linear-gradient(transparent 70%,#FD6647 50%); */
+    display: inline-block;
+    padding: 0;
+}
+
+.bottommargin{
+    margin-bottom: 1000px;
+}
