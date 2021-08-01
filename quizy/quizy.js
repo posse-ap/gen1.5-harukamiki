@@ -76,6 +76,13 @@ for (i = 0; i < choices.length; i++) {
 /////////////////////////////////function after clicking//////////////////////////////
                     // 変数 (何問目か,クリックした選択肢,シャッフル後の答えの位置)
 var clickedFunction = function (rounds, clkdButton, answer) {
+
+    // for(let p=1; p < 4; p++){
+    //     let option = document.getElementById('option' + rounds + `-${p}`);
+    //     console.log(p);
+    // }
+
+
     let option1 = document.getElementById('option' + rounds + '-0');
     let option2 = document.getElementById('option' + rounds + '-1');
     let option3 = document.getElementById('option' + rounds + '-2');
@@ -101,7 +108,7 @@ var clickedFunction = function (rounds, clkdButton, answer) {
         console.log('空白作成OK');
         let monnme = document.getElementById('monnme' + rounds);
         monnme.classList.add('bottommargin');
-    } else { };
+    };
     //   自動スクロール 
     let scrollarea = pressedButton.getBoundingClientRect();
     let scrollareatop = scrollarea.top + window.pageYOffset;
