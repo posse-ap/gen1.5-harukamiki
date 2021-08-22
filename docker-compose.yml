@@ -25,8 +25,8 @@ services:
         image: mysql:latest
         command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
         environment:
-            MYSQL_DATABASE: shukatsu
-            MYSQL_USER: posse_user
+            MYSQL_DATABASE: quizy
+            MYSQL_USER: mikiharu
             MYSQL_PASSWORD: password
             MYSQL_ROOT_PASSWORD: password
         ports:
