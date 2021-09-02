@@ -16,9 +16,13 @@ body{
 .monnme{
     margin: 0 auto;
     max-width: 800px;
-    width: 90%;
 }
 
+.title_box{
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1200px;
+}
 
 .title{
     font-size:19px;
@@ -37,7 +41,7 @@ img{
     display: block;
     margin:0 auto;
     max-width:100%;
-    width: 80vw; 
+    /* width: 80vw;  */
 }
 
 p{

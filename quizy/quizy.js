@@ -54,23 +54,23 @@ for (i = 0; i < choices.length; i++) {
     /////////シャッフル後の正解の位置確保////////////
     let a = choices[i].indexOf(answerBoxAnswer[i]);
     /////////////////////////////////////////////////
-    let h =
-        '<div class="monnme">'
-        + `<div class="monnme1" id="monnme${i}">`
-        + `<h2>${i + 1}. この地名はなんて読む？</h2>`
-        + `<img src= ${images[i]} alt="No.${i}.photo">`
-        + '<ul>';
-    for (let c = 0; c < choices[0].length; c++) {
-        h = h + `<li id="option${i}-${c}" onclick="clickedFunction(${i},'${c}','${a}')">${choices[i][c]}</li>`
-    };
-    h = h
-        + '</ul>'
-        + `<div id="answerBox${i}">`
-        + `<p id="seikai${i}"></p>`
-        + `<p id="seikaiexp${i}"></p>`
-        + '</div>'
-        + '</div>';
-    document.write(h);
+    // let h =
+    //      `<div class="monnme1" id="monnme${i}">`
+    //     + `<h2>${i + 1}. この地名はなんて読む？</h2>`
+    //     + `<img src= ${images[i]} alt="No.${i}.photo">`
+    //     + '<ul>'
+    // // for (let c = 0; c < choices[0].length; c++) {
+    // //     h = h + `<li id="option${i}-${c}" onclick="clickedFunction(${i},'${c}','${a}')">${choices[i][c]}</li>`
+    // // };
+    //     + `<li id="option${i}-0" onclick="clickedFunction(${i},'0','${a}')"><?= $questions[0]['choice1'] ?></li>`
+    //     + `<li id="option${i}-1" onclick="clickedFunction(${i},'1','${a}')"><?= $questions[0]['choice2'] ?></li>`
+    //     + `<li id="option${i}-2" onclick="clickedFunction(${i},'2','${a}')"><?= $questions[0]['choice3'] ?></li>`
+    //     + '</ul>'
+    //     + `<div id="answerBox${i}">`
+    //     + `<p id="seikai${i}"></p>`
+    //     + `<p id="seikaiexp${i}"></p>`
+    //     + '</div>';
+    // document.write(h + '</div>');
 };
 
 /////////////////////////////////function after clicking//////////////////////////////
