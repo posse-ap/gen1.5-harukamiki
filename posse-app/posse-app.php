@@ -12,7 +12,7 @@
 
 <body>
     <header class="header">
-        <img src="posselogoss.png" alt="posse.logo">
+        <img src="images/posselogoss.png" alt="posse.logo">
         <span class="weekNo">4th week</span>
         <button class="topbutton" onclick="openModal()">記録・投稿</button>
     </header>
@@ -39,7 +39,6 @@
             <div class="bar"></div>
             <div class="bargraph">
                 <canvas id="myChart" class="bargraphItself"></canvas>
-                <!-- <img src="leftgraff.png" alt="bargraph.photo" class="bargraphPhoto"> -->
             </div>
         </div>
 

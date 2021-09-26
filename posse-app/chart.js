@@ -1,3 +1,5 @@
+// おすすめのサイト　https://app.diagrams.net/
+
 var barchart = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(barchart, {
   type: 'bar',

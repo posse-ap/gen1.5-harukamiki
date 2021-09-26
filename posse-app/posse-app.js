@@ -59,8 +59,8 @@ function openCalendar(){
 function dateclicked(index){
   let clickedDate = index;
 
-  let date = document.getElementById("calendarDate" + clickedDate);
-  if(date.style.backgroundColor =="white"){
+  const date = document.getElementById("calendarDate" + clickedDate);
+  if(date.style.backgroundColor === "white"){
     date.style.backgroundColor = "#0F71BD";
     date.style.color = "#FFFFFF";
   }else{
