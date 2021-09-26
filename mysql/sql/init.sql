@@ -20,14 +20,14 @@ CREATE TABLE questions_tokyo (
 
 INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('1', 'たかなわ', 'たかわ', 'こうわ');
 INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('2', 'かめいど', 'かめと', 'かめど');
-INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('3', 'かゆまち', 'おかちまち', 'こうじまち');
-INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('4', 'おかどもん', 'ごせいもん', 'おなりもん');
-INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('5', 'たたりき', 'たたら', 'とどろき');
-INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('6', 'せきこうい', 'いじい', 'しゃくじい');
-INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('7', 'ざっしき', 'ざっしょく', 'ぞうしき');
-INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('8', 'ごしろちょう', 'みとちょう', 'おかちまち');
-INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('9', 'ろっこつ', 'しこね', 'ししぼね');
-INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('10', 'こしゃく', 'こばく', 'こぐれ');
+INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('3', 'こうじまち','かゆまち', 'おかちまち');
+INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('4', 'おなりもん','おかどもん', 'ごせいもん');
+INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('5', 'とどろき','たたりき', 'たたら');
+INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('6', 'しゃくじい','せきこうい', 'いじい');
+INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('7', 'ぞうしき','ざっしき', 'ざっしょく');
+INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('8', 'おかちまち','ごしろちょう', 'みとちょう');
+INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('9', 'ししぼね','ろっこつ', 'しこね');
+INSERT INTO `questions_tokyo` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('10', 'こぐれ','こしゃく', 'こばく');
 
 
 DROP TABLE IF EXISTS questions_hiroshima;
@@ -42,5 +42,13 @@ CREATE TABLE questions_hiroshima (
   choice3 VARCHAR(255) NOT NULL
 );
 
-INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('1', 'むこうひら', 'むかいなだ', 'むきひら');
-INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('2', 'おしらべ', 'みつぎ', 'みよし');
+INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('1', 'むかいなだ', 'むきひら','むこうひら');
+INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('2', 'みつぎ','おしらべ', 'みよし');
+INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('3', 'かなやま','きやま', 'ぎんざん');
+INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('4', 'とよひ','としか', 'とよか');
+INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('5', 'いしぐろ','いしあぜ', 'しゃくぜ');
+INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('6', 'みよし','みつぎ', 'みかた');
+INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('7', 'うずい', 'もみち', 'くもおり');
+INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('8', 'すもも','でこぽん', 'ぽんかん');
+INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('9', 'おおちごとうげ', 'おおちごえとうげ', 'おうちごとうげ');
+INSERT INTO `questions_hiroshima` (`id`, `choice1`, `choice2`, `choice3`) VALUES ('10', 'よおろほよばら','てっぽよばら', 'ていぼよはら');

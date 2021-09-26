@@ -15,6 +15,7 @@ try {
     if($id == 1){
         $theme = '東京';
         $stmt = $pdo->query("SELECT * FROM questions_tokyo");
+        $questions = $stmt->fetchAll();
         $images = [   
             "https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png",
             "https://d1khcm40x1j0f.cloudfront.net/quiz/512b8146e7661821c45dbb8fefedf731.png",
@@ -26,9 +27,15 @@ try {
             "https://d1khcm40x1j0f.cloudfront.net/quiz/50a753d151d35f8602d2c3e2790ea6e4.png",
             "https://d1khcm40x1j0f.cloudfront.net/words/8cad76c39c43e2b651041c6d812ea26e.png",
             "https://d1khcm40x1j0f.cloudfront.net/words/34508ddb0789ee73471b9f17977e7c9c.png"];
+
+        $answerBoxAnswer = [
+            "たかなわ", "かめいど", "こうじまち", "おなりもん", "とどろき", "しゃくじい", "ぞうしき", "おかちまち", "ししぼね", "こぐれ"
+        ];
+
     }if($id == 2){
         $theme = '広島';
         $stmt = $pdo->query("SELECT * FROM questions_hiroshima");
+        $questions = $stmt->fetchAll();
         $images = [
             "https://d1khcm40x1j0f.cloudfront.net/quiz/d876208414d51791af9700a0389b988b.png",
             "https://d1khcm40x1j0f.cloudfront.net/quiz/51e91a5c0b3bc7d6bef3b4c02d6c553d.png",
@@ -41,31 +48,23 @@ try {
             "https://d1khcm40x1j0f.cloudfront.net/quiz/90806c11c7d473c78b6235060736ab7c.png",
             "https://d1khcm40x1j0f.cloudfront.net/quiz/748410d33b48ab39319a705a8f5c1662.png"
         ];
+        $answerBoxAnswer = [
+            "むかいなだ", "みつぎ", "かなやま", "とよひ", "いしぐろ", "みよし", "うずい", "すもも", "おおちごとうげ", "こぐれ"
+        ];
     }
-    $questions = $stmt->fetchAll();
-    // var_dump($questions);
-
-    // foreach($questions as $question){
-    //     print_r($question);
-    // };
-    $answerBoxAnswer = [
-        "たかなわ", "かめいど", "こうじまち", "おなりもん", "とどろき", "しゃくじい", "ぞうしき", "おかちまち", "ししぼね", "こぐれ"
-    ];
 
 }catch(PDOException $e){
     echo $e -> getMessage() . PHP_EOL;
     exit;
   };
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <link rel="stylesheet" href="stylesheet.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
     <title>ガチで<?=$theme ?>の人しか解けない！ #<?=$theme ?>の難読地名クイズ</title>
 </head>
 
@@ -73,19 +72,23 @@ try {
     <div class="monnme">
         <h1 class="title">ガチで<?=$theme ?>の人しか解けない！ #<?=$theme ?>の難読地名クイズ</h1>
         <?php foreach($questions as $question){
+        $numbers = [0,1,2];
+        shuffle($numbers);
+        print_r($numbers);
+        // shuffle($question);
         $question_number = $question['id'] -1;?>
 
         <div class="monnme<?= $question_number +1?>" id="monnme<?= $question_number +1?>">
         <h2><?= $question_number +1?>. この地名はなんて読む？</h2>
         <img src= "<?=$images[$question_number] ?>" alt="No.<?=$question_number ?>.photo">
         <ul>
-        <li id="option<?=$question_number ?>-0" onclick="clickedFunction(<?=$question_number ?>,'0','<?= $answerBoxAnswer[$question_number]?>')"><?= $questions[$question_number]['choice1'] ?></li>
-        <li id="option<?=$question_number ?>-1" onclick="clickedFunction(<?=$question_number ?>,'1','<?= $answerBoxAnswer[$question_number]?>')"><?= $questions[$question_number]['choice2'] ?></li>
-        <li id="option<?=$question_number ?>-2" onclick="clickedFunction(<?=$question_number ?>,'2','<?= $answerBoxAnswer[$question_number]?>')"><?= $questions[$question_number]['choice3'] ?></li>
+        <li id="option<?=$question_number?>-<?=$numbers[0]?>" onclick="clickedFunction(<?=$question_number ?>,<?=$numbers[0]?>)"><?= $questions[$question_number]['choice' . ($numbers[0]+1)] ?></li>
+        <li id="option<?=$question_number?>-<?=$numbers[1]?>" onclick="clickedFunction(<?=$question_number ?>,<?=$numbers[1]?>)"><?= $questions[$question_number]['choice' . ($numbers[1]+1)] ?></li>
+        <li id="option<?=$question_number?>-<?=$numbers[2]?>" onclick="clickedFunction(<?=$question_number ?>,<?=$numbers[2]?>)"><?= $questions[$question_number]['choice' . ($numbers[2]+1)] ?></li>
         </ul>
         <div id="answerBox<?= $question_number ?>">
         <p id="seikai<?= $question_number ?>"></p>
-        <p id="seikaiexp<?= $question_number ?>"></p>
+        <p id="seikaiexp<?= $question_number ?>" class="hide">正解は「<?= $answerBoxAnswer[$question_number]?>」です！</p>
         </div>
         <?php }; ?>
 
