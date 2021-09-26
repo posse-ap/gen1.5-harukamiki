@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <link rel="stylesheet" href="posse-app.css">
+    <script src="https://kit.fontawesome.com/deee3ad54f.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <header class="header">
+        <img src="posselogoss.png" alt="posse.logo">
+        <span class="weekNo">4th week</span>
+        <button class="topbutton" onclick="openModal()">記録・投稿</button>
+    </header>
+
+    <main class="main">
+        <div class="bargraphBigBox">
+            <div class="hourBigBox">
+                <div class="hourBox">
+                    <span class="hourBoxTitle">Today</span>
+                    <span class="todayNo">3</span>
+                    <span class="hour">hour</span>
+                </div>
+                <div class="hourBox">
+                    <span class="hourBoxTitle">Month</span>
+                    <span class="monthNo">120</span>
+                    <span class="hour">hour</span>
+                </div>
+                <div class="hourBox">
+                    <span class="hourBoxTitle">Total</span>
+                    <span class="totalNo">1348</span>
+                    <span class="hour">hour</span>
+                </div>
+            </div>
+            <div class="bar"></div>
+            <div class="bargraph">
+                <canvas id="myChart" class="bargraphItself"></canvas>
+                <!-- <img src="leftgraff.png" alt="bargraph.photo" class="bargraphPhoto"> -->
+            </div>
+        </div>
+
+        <div class="piechartBigBox">
+            <div class="languageBigBox">
+                <div class="piechartTitle">学習言語</div>
+                <!-- <img src="gengoguraff.png" alt="piechart.language" class="langPiechart"> -->
+                <canvas id="langPiechart" class="langPiechart" width="100" height="100"></canvas>
+                <li class="uljavascript">Javascript</li>
+                <li class="CSS">CSS</li>
+                <li class="PHP">PHP</li>
+                <li class="HTML">HTML</li>
+                <li class="Laravel">Laravel</li>
+                <li class="SQL">SQL</li>
+                <li class="SHELL">SHELL</li>
+                <li class="jyohou">情報基礎知識(その他)</li>
+            </div>
+
+            <div class="contentsBigBox">
+                <div class="piechartTitle">学習コンテンツ</div>
+                <!-- <img src="conteguraff.png" alt="piechart.contents" class="contPiechart"> -->
+                <canvas id="contPiechart" class="contPiechart" width="100" height="100"></canvas>
+                <li class="dotinstall">ドットインストール</li>
+                <li class="nyobi">N予備校</li>
+                <li class="posseassignment">POSSE課題</li>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <i class="fas fa-chevron-left calendarback"></i>
+        <div class="bottomCalendar">2020年10月</div>
+        <i class="fas fa-chevron-right calendarforward"></i>
+        <button class="bottombutton" onclick="openModal()">記録・投稿</button>
+    </footer>
+
+    <section class="modalOutside" id="modalOutside">
+        <div id="modal" class='modal'>
+            <div onclick="closeModal()" id="closeModal">×</div>
+            <div class="modalInside" id="modalInside">
+                <div class="modal-lefthalf">
+                    <h3>学習日</h3>
+                    <input id="modal-calendar" class="modal-calendar" type="text" onclick="openCalendar()"
+                        readonly="readonly">
+                    <h3>学習コンテンツ(複数選択可)</h3>
+                    <ul>
+                        <label class="modal-checkbox"><input class="modal-checkboxInput" type="checkbox">N予備校</label>
+                        <label class="modal-checkbox"><input class="modal-checkboxInput"
+                                type="checkbox">ドットインストール</label>
+                        <label class="modal-checkbox"><input class="modal-checkboxInput" type="checkbox">POSSE課題</label>
+                    </ul>
+                    <h3>学習言語(複数選択可)</h3>
+                    <ul>
+                        <label for="HTML" class="modal-checkbox"><input name="HTML" class="modal-checkboxInput"
+                                type="checkbox">HTML</label>
+                        <label for="CSS" class="modal-checkbox"><input name="CSS" class="modal-checkboxInput"
+                                type="checkbox">CSS</label>
+                        <label for="JAVASCRIPT" class="modal-checkbox"><input name="JAVASCRIPT"
+                                class="modal-checkboxInput" type="checkbox">Javascript</label>
+                        <label for="PHP" class="modal-checkbox"><input name="PHP" class="modal-checkboxInput"
+                                type="checkbox">PHP</label>
+                        <label for="LARAVEL" class="modal-checkbox"><input name="LARAVEL" class="modal-checkboxInput"
+                                type="checkbox">Laravel</label>
+                        <label for="SQL" class="modal-checkbox"><input name="SQL" class="modal-checkboxInput"
+                                type="checkbox">SQL</label>
+                        <label for="SHELL" class="modal-checkbox"><input name="SHELL" class="modal-checkboxInput"
+                                type="checkbox">SHELL</label>
+                        <label for="JYOHO" class="modal-checkbox"><input name="JYOHO" class="modal-checkboxInput"
+                                type="checkbox">情報システム基礎知識(その他)</label>
+                    </ul>
+                </div>
+                <div class="modal-righthalf">
+                    <h3>学習時間</h3>
+                    <input class="modal-input" type="text">
+                    <h3>Twitter用コメント</h3>
+                    <textarea name="" id="content" class="modal-inputTWT" cols="2" rows="3" maxlength="140"></textarea>
+                    <input name="twitterCheck" type="checkbox">Twitterにシェアする</i>
+                    <!-- <i id="twitter" class="fas fa-check-circle twt">Twitterにシェアする</i> -->
+                </div>
+
+            </div>
+            <button onclick="completeModal()" class="modalbutton" id="modalbutton">記録・投稿</button>
+
+            <div id="loading">
+                <div class="loader"></div>
+            </div>
+
+            <div id="postComplete" class="postComplete">
+                <p class="awe">AWESOME!</p>
+                <i class="fas fa-check-circle size"></i>
+                <p>
+                    記録・投稿<br>完了しました
+                </p>
+            </div>
+
+            <div id="modalCalendar" class="modalCalendar">
+                <i class="fas fa-arrow-left arrow" onclick="openModal()"></i>
+                <!-- <iframe class="calendar" src="https://calendar.google.com/calendar/embed?height=500&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FTokyo&amp;src=aGFydS5tMWsxQGtlaW8uanA&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=Y19ndmoxZHZybTJzcDFsc2ZxdG5wY2o0OGs0b0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;src=a2Vpby5qcF9jbGFzc3Jvb200MmY0MTFlMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;src=amEuamFwYW5lc2UjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%2333B679&amp;color=%23795548&amp;color=%23137333&amp;color=%230B8043&amp;hl=en&amp;showTitle=0&amp;showPrint=0&amp;showTz=0&amp;showCalendars=0&amp;showTabs=0&amp;showDate=0" style="border-width:0" width="800" height="500" frameborder="0" scrolling="no"></iframe> -->
+                <div class="CalendarModalTitle">2020年10月</div>
+                <table class="calendar">
+                    <tr>
+                        <th>SUN</th>
+                        <th>MON</th>
+                        <th>TUE</th>
+                        <th>WED</th>
+                        <th>THU</th>
+                        <th>FRI</th>
+                        <th>SAT</th>
+                    </tr>
+
+                    <tr class="day">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td id="calendarDate1" onclick="dateclicked(1)">1</td>
+                        <td id="calendarDate2" onclick="dateclicked(2)">2</td>
+                        <td onclick="dateclicked('03')">3</td>
+                    </tr>
+                    <tr class="day">
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <tr class="day">
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                    </tr>
+                    <tr class="day">
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                    </tr>
+                    <tr class="day">
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                    </tr>
+                </table>
+                <button type="submit" class="calendarSubmitButton" onclick="submitDate()">決定</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="posse-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+    <script src="chart.js"></script>
+    <script src="chartjs-plugin-labels.js"></script>
+</body>
+
+</html>
