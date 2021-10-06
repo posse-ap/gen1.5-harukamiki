@@ -24,7 +24,7 @@ services:
     db:
         image: mysql:latest
         environment:
-            MYSQL_DATABASE: quizy
+            MYSQL_DATABASE: posseapp
             MYSQL_USER: mikiharu
             MYSQL_PASSWORD: password
             MYSQL_ROOT_PASSWORD: password

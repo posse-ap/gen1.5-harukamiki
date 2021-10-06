@@ -1,3 +1,12 @@
+<?PHP
+$pdo = new PDO('mysql:charset=UTF8;dbname=posseapp;host=localhost', 'mikiharu', 'password');
+$stmt = $pdo->prepare("SELECT * FROM posseapp");
+$res = $stmt->execute();
+$data = $stmt->fetch();
+var_dump($data);
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 

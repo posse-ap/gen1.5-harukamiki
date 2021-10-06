@@ -83,6 +83,26 @@ function submitDate(){
   inmodalButton.style.display ="block";
 }
 
+/**
+ * カウントを管理するオブジェクトです。
+ * @constructor
+ */
+function CountManager(){
+  /**
+   * @type {number}
+   */
+  this._count = 0;
+
+ this.addCount = function(){
+  this._count++;
+};
+/**
+ * @return {number}
+ */
+ this.getCount = function() {
+  return this._count;
+};
+}
 
 // twitter投稿
 let twitterCheck = document.getElementsByName("twitterCheck");
