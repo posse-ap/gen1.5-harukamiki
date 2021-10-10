@@ -7,8 +7,10 @@ services:
         depends_on:
             - app
         volumes:
+            # 設定ファイル+本物
             - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-            - ./posse-app:/var/www/html
+            - ./posse-app:/var/www/html 
+    # webは表示
     app:
         build: ./php
         image: php:7.4-fpm
@@ -17,10 +19,13 @@ services:
         volumes:
             - ./posse-app:/var/www/html
             - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
+            
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:latest
         ports: ["8888:80"]
         depends_on: ["db"]
+        # appは機能
+
     db:
         image: mysql:latest
         environment:
@@ -31,6 +36,9 @@ services:
         ports:
             - "3306:3306"
         volumes:
+            # ↓sqlを実行
             - ./mysql/sql:/docker-entrypoint-initdb.d
+            # ↓sqlが実行された結果を表示
             - ./mysql/data:/var/lib/mysql
+            # ↓設定ファイル
             - ./mysql/my.cnf:/etc/mysql/conf.d/

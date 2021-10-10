@@ -1,9 +1,26 @@
 <?PHP
-$pdo = new PDO('mysql:charset=UTF8;dbname=posseapp;host=localhost', 'mikiharu', 'password');
-$stmt = $pdo->prepare("SELECT * FROM posseapp");
+try {
+    $pdo = new PDO(
+        'mysql:host=db;dbname=posseapp;charset=utf8mb4',
+        'mikiharu',
+        'password',
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ]
+    );
+
+}catch(PDOException $e){
+    echo $e -> getMessage() . PHP_EOL;
+    exit;
+  };
+
+$pdo = new PDO('mysql:dbname=posseapp;host=db;charset=utf8mb4', 'mikiharu', 'password');
+$stmt = $pdo->prepare('SELECT * FROM posseapp');
 $res = $stmt->execute();
 $data = $stmt->fetch();
-var_dump($data);
+print_r($data);
  ?>
 
 
@@ -212,7 +229,7 @@ var_dump($data);
 
     <script src="posse-app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
-    <script src="chart.js"></script>
+    <script src="chart.php" type="text/javascript"></script>
     <script src="chartjs-plugin-labels.js"></script>
 </body>
 

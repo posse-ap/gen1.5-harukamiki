@@ -2,11 +2,11 @@
 -- 一行一行terminalにも書くことができる : 
 
 DROP SCHEMA IF EXISTS posseapp; 
--- ↑posse-appがあれば壊す
+-- ↑posseappがあれば壊す
 CREATE SCHEMA posseapp;
--- ↑qposse-appを作る
+-- ↑posseappを作る
 USE posseapp;
--- posse-appに入る
+-- posseappに入る
 DROP TABLE IF EXISTS studydata;
 
 
@@ -29,6 +29,6 @@ CREATE TABLE studydata (
 
 -- table作る、columnの設定
 
-INSERT INTO `studydata` (`date`, `contents`, `languages`,'timelength') VALUES ('2021-10-04', 'N予備校', 'HTML', 5);
-INSERT INTO `studydata` (`date`, `contents`, `languages`,'timelength') VALUES ('2021-10-05', 'ドットインストール', 'CSS', 3);
-INSERT INTO `studydata` (`date`, `contents`, `languages`,'timelength') VALUES ('2021-10-06', 'POSSE課題', 'PHP', '2');
+INSERT INTO `studydata` (`date`, `contents`, `languages`,'timelength') VALUES ('2021-10-04','N予備校','HTML',5);
+INSERT INTO `studydata` (`date`, `contents`, `languages`,'timelength') VALUES ('2021-10-05','ドットインストール','CSS',3);
+INSERT INTO `studydata` (`date`, `contents`, `languages`,'timelength') VALUES ('2021-10-06','POSSE課題','PHP','2');
