@@ -9,19 +9,9 @@ USE posseapp;
 -- posseappに入る
 DROP TABLE IF EXISTS studydata;
 
-
--- 必要なテーブル
--- 　日付
--- 学習コンテンツ
--- 学習言語
--- 学習時間
--- 　勉強時間の合計
-
--- table壊す
-
-CREATE TABLE studydata (
-  id INT AUTO_INCREMENT,
-  date VARCHAR(10) NOT NULL,
+CREATE TABLE studydata
+(
+  studiedon VARCHAR(10) NOT NULL,
   contents VARCHAR(255) NOT NULL,
   languages VARCHAR(255) NOT NULL,
   timelength INT NOT NULL
@@ -29,6 +19,10 @@ CREATE TABLE studydata (
 
 -- table作る、columnの設定
 
-INSERT INTO `studydata` (`date`, `contents`, `languages`,'timelength') VALUES ('2021-10-04','N予備校','HTML',5);
-INSERT INTO `studydata` (`date`, `contents`, `languages`,'timelength') VALUES ('2021-10-05','ドットインストール','CSS',3);
-INSERT INTO `studydata` (`date`, `contents`, `languages`,'timelength') VALUES ('2021-10-06','POSSE課題','PHP','2');
+INSERT INTO studydata (studiedon,contents,languages,timelength) VALUES ("2021-10-04","N予備校","HTML",3);
+INSERT INTO studydata (studiedon,contents,languages,timelength) VALUES ("2021-10-05","N予備校","CSS",4);
+INSERT INTO studydata (studiedon,contents,languages,timelength) VALUES ("2021-10-06","N予備校","HTML",5);
+INSERT INTO studydata (studiedon,contents,languages,timelength) VALUES ("2021-10-07","ドットインストール","CSS",4);
+INSERT INTO studydata (studiedon,contents,languages,timelength) VALUES ("2021-10-08","ドットインストール","JavaScript",2);
+INSERT INTO studydata (studiedon,contents,languages,timelength) VALUES ("2021-10-09","POSSE課題","PHP",2);
+INSERT INTO studydata (studiedon,contents,languages,timelength) VALUES ("2021-10-10","POSSE課題","PHP",8);

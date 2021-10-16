@@ -1,4 +1,6 @@
-<!-- グラフにdb埋め込む -->
+<?php
+require('requiresql.php');
+?>
 
 var barchart = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(barchart, {
@@ -7,7 +9,15 @@ var myChart = new Chart(barchart, {
     labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
     datasets: [{
       backgroundColor: "#3BCDFD",
-      data: [0, 3, 4, 5, 3, 0, 0, 4, 2, 2, 8, 8, 2, 2, 1, 7, 4, 4, 3, 3, 3, 2, 2, 6, 2, 2, 1, 1, 1, 7, 8],
+
+<?php
+$stmt = $pdo->prepare('SELECT timelength FROM studydata');
+$stmt->execute();
+$timelength = $stmt->fetchAll();
+print_r($timelength);
+?>
+<!-- エラーできてる、取得できてるが、打ち込み方まだ -->
+      data: [<?= $timelength ?>],
     }]
   },
   
@@ -41,6 +51,7 @@ var myChart = new Chart(barchart, {
     }]
   }
 });
+<!--  -->
 // // ////////////////学習言語//////////////////
 var ctx = document.getElementById("langPiechart").getContext('2d');
 var langPiechartChart = new Chart(ctx, {

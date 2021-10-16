@@ -1,0 +1,24 @@
+<?PHP
+try {
+    $pdo = new PDO(
+        'mysql:host=db;dbname=posseapp;charset=utf8mb4',
+        'mikiharu',
+        'password',
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ]
+    );
+
+}catch(PDOException $e){
+    echo $e -> getMessage() . PHP_EOL;
+    exit;
+  };
+
+$pdo = new PDO('mysql:dbname=posseapp;host=db;charset=utf8mb4', 'mikiharu', 'password');
+$stmt = $pdo->prepare('SELECT timelength FROM studydattta');
+$res = $stmt->execute();
+$data = $stmt->fetch();
+print_r($data);
+ ?>

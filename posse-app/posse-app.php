@@ -1,27 +1,7 @@
-<?PHP
-try {
-    $pdo = new PDO(
-        'mysql:host=db;dbname=posseapp;charset=utf8mb4',
-        'mikiharu',
-        'password',
-        [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
-        ]
-    );
+<?php
+require('requiresql.php');
 
-}catch(PDOException $e){
-    echo $e -> getMessage() . PHP_EOL;
-    exit;
-  };
-
-$pdo = new PDO('mysql:dbname=posseapp;host=db;charset=utf8mb4', 'mikiharu', 'password');
-$stmt = $pdo->prepare('SELECT * FROM posseapp');
-$res = $stmt->execute();
-$data = $stmt->fetch();
-print_r($data);
- ?>
+?>
 
 
 <!DOCTYPE html>
@@ -86,7 +66,7 @@ print_r($data);
             <div class="contentsBigBox">
                 <div class="piechartTitle">学習コンテンツ</div>
                 <!-- <img src="conteguraff.png" alt="piechart.contents" class="contPiechart"> -->
-                <canvas id="contPiechart" class="contPiechart" width="100" height="100"></canvas>
+                <canvas id="contPiechart" class="contPiechart"></canvas>
                 <li class="dotinstall">ドットインストール</li>
                 <li class="nyobi">N予備校</li>
                 <li class="posseassignment">POSSE課題</li>
