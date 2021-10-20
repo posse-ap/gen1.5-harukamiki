@@ -1,6 +1,12 @@
 <?php
 require('requiresql.php');
-
+$stmt = $pdo->prepare('SELECT timelength FROM studydata GROUP BY studiedon');
+$stmt->execute();
+$timelength = $stmt->fetchAll();
+// echo $timelength;
+foreach($timelength as $length):
+    echo $length[0] . ',' . PHP_EOL;
+endforeach;
 ?>
 
 

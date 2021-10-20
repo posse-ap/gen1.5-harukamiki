@@ -1,24 +1,38 @@
 <?php
 require('requiresql.php');
+
+$stmt = $pdo->prepare('SELECT sum(timelength) FROM studydata GROUP BY studiedon');
+$stmt->execute();
+$timelength = $stmt->fetchAll();
+
+$datelabel = $pdo->prepare('SELECT studiedon FROM studydata');
+$datelabel -> execute();
+$datelabels = $datelabel->fetchAll();
+
 ?>
 
 var barchart = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(barchart, {
+var myChart = new Chart(barchart,{
   type: 'bar',
   data: {
-    labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
-    datasets: [{
-      backgroundColor: "#3BCDFD",
-
+    labels:[
 <?php
-$stmt = $pdo->prepare('SELECT timelength FROM studydata');
-$stmt->execute();
-$timelength = $stmt->fetchAll();
-print_r($timelength);
-?>
-<!-- エラーできてる、取得できてるが、打ち込み方まだ -->
-      data: [<?= $timelength ?>],
-    }]
+foreach($datelabels as $bargraphlabels):
+  echo substr($bargraphlabels[0],-2,2) . ',' . PHP_EOL;
+endforeach;
+?>],
+    <!-- '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'], -->
+  
+    datasets:[{
+      backgroundColor: "#3BCDFD",
+      data: [
+      <?php 
+      foreach($timelength as $length):
+        echo $length[0] . ',' . PHP_EOL;
+      endforeach;
+      ?>
+    ]
+  }]
   },
   
   options: {
