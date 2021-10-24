@@ -4,9 +4,26 @@ $stmt = $pdo->prepare('SELECT timelength FROM studydata GROUP BY studiedon');
 $stmt->execute();
 $timelength = $stmt->fetchAll();
 // echo $timelength;
-foreach($timelength as $length):
-    echo $length[0] . ',' . PHP_EOL;
-endforeach;
+$stmt = $pdo->prepare('SELECT DATE_FORMAT(studiedon,\'%d\') as date, sum(timelength) FROM studydata GROUP BY studiedon');
+$stmt->execute();
+$timelength = $stmt->fetchAll();
+
+// 1を　01にしたい　TODO
+// $range = range(1,date('t'));
+// // foreach 
+// // $range = (int)$range;
+// echo $range;
+
+
+// $timelength_date = $pdo->prepare('SELECT DATE_FORMAT(studiedon,\'%d\') as date, sum(timelength) FROM studydata GROUP BY studiedon');
+foreach($everydate as $eachdate) {
+        if (array_search($eachdate, $timelength)) {
+            echo $eachdate . ',' . PHP_EOL;
+        }else{
+            echo 0 . ',' . PHP_EOL;
+        }
+    }
+
 ?>
 
 

@@ -1,9 +1,13 @@
 <?php
 require('requiresql.php');
 
-$stmt = $pdo->prepare('SELECT sum(timelength) FROM studydata GROUP BY studiedon');
+$stmt = $pdo->prepare('SELECT studiedon, sum(timelength) FROM studydata GROUP BY studiedon');
 $stmt->execute();
 $timelength = $stmt->fetchAll();
+// この状態　→　書いてある日程
+// foreach
+// if{$timelength }
+
 
 $datelabel = $pdo->prepare('SELECT studiedon FROM studydata');
 $datelabel -> execute();
@@ -17,8 +21,8 @@ var myChart = new Chart(barchart,{
   data: {
     labels:[
 <?php
-foreach($datelabels as $bargraphlabels):
-  echo substr($bargraphlabels[0],-2,2) . ',' . PHP_EOL;
+foreach(range(1,date('t')) as $bargraphlabels):
+  echo $bargraphlabels . ',' . PHP_EOL;
 endforeach;
 ?>],
     <!-- '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'], -->
