@@ -1,15 +1,14 @@
 <?php
 require('requiresql.php');
 
-$stmt = $pdo->prepare('SELECT studiedon, sum(timelength) FROM studydata GROUP BY studiedon');
+$stmt = $pdo->prepare('SELECT studied_on, sum(timelength) FROM studydata GROUP BY studiedon');
 $stmt->execute();
 $timelength = $stmt->fetchAll();
 // この状態　→　書いてある日程
 // foreach
 // if{$timelength }
 
-
-$datelabel = $pdo->prepare('SELECT studiedon FROM studydata');
+$datelabel = $pdo->prepare('SELECT studied_on FROM studydata');
 $datelabel -> execute();
 $datelabels = $datelabel->fetchAll();
 
@@ -21,21 +20,36 @@ var myChart = new Chart(barchart,{
   data: {
     labels:[
 <?php
-foreach(range(1,date('t')) as $bargraphlabels):
-  echo $bargraphlabels . ',' . PHP_EOL;
-endforeach;
-?>],
-    <!-- '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'], -->
-  
+$datelabels = range(1,date('t'));
+foreach($datelabels as $key => $bargraphlabels){
+  echo '\'' . $bargraphlabels . '\''. ',' . PHP_EOL;
+
+if ($bargraphlabels == end($datelabels)) {
+  echo '\'' . $bargraphlabels . '\'' . PHP_EOL;
+}
+}
+?>
+<!-- '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30' -->
+],
     datasets:[{
       backgroundColor: "#3BCDFD",
       data: [
-      <?php 
-      foreach($timelength as $length):
-        echo $length[0] . ',' . PHP_EOL;
-      endforeach;
+      <!-- TODO -->
+      <!-- https://ja.stackoverflow.com/questions/12597/sql%E3%81%A7%E7%84%A1%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%95%E3%81%9B%E3%81%9F%E3%81%84 -->
+        <?php 
+      $stmt = $pdo->prepare('SELECT studied_on FROM studydata GROUP BY studied_on');
+      $stmt->execute();
+      $timelength = $stmt->fetchAll();
+      
+      // foreach($timelength as $length):
+      //   echo $length[0] . ',' . PHP_EOL;
+      // endforeach;
+
+      // $everyday = query
+
       ?>
-    ]
+      ],
+    
   }]
   },
   

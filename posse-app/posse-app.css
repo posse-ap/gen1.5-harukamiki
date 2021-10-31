@@ -727,7 +727,7 @@ body{
 
 .uljavascript, .CSS , .PHP, .HTML, .Laravel, .SQL, .SHELL, .jyohou, .dotinstall, .nyobi, .posseassignment{
     display: inline-block;
-    margin:0;
+    margin:5px 0;
     padding:0;
     font-size: medium;
 } 

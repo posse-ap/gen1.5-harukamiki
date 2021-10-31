@@ -1,28 +1,50 @@
 <?php
 require('requiresql.php');
-$stmt = $pdo->prepare('SELECT timelength FROM studydata GROUP BY studiedon');
-$stmt->execute();
-$timelength = $stmt->fetchAll();
-// echo $timelength;
-$stmt = $pdo->prepare('SELECT DATE_FORMAT(studiedon,\'%d\') as date, sum(timelength) FROM studydata GROUP BY studiedon');
-$stmt->execute();
-$timelength = $stmt->fetchAll();
+
+// $stmt = $pdo->query('SELECT timelength FROM studydata');
+// $stmt->execute();
+// $timelength = $stmt->fetchAll();
+// print_r($timelength);
+
+$datelabels = range(1,date('t'));
+foreach($datelabels as $key => $bargraphlabels){
+  echo '\'' . $bargraphlabels . '\''. ',' . PHP_EOL;
+
+if ($bargraphlabels == end($datelabels)) {
+  echo '\'' . $bargraphlabels . '\'' . PHP_EOL;
+}
+}
+
+// $pdo = new PDO('mysql:dbname=posseapp; host=db; charset=utf8mb4', 'mikiharu', 'password');
+// $stmt = $pdo->prepare('SELECT * FROM studydata');
+// $stmt->execute();
+// $timelength = $stmt->fetchAll();
+// var_dump($stmt);
+
+// $stmt = $pdo->prepare('SELECT timelength FROM studydata GROUP BY studiedon');
+// $stmt->execute();
+// $timelength = $stmt->fetchAll();
 
 // 1を　01にしたい　TODO
 // $range = range(1,date('t'));
-// // foreach 
-// // $range = (int)$range;
+// foreach 
+// $range = (int)$range;
 // echo $range;
 
 
 // $timelength_date = $pdo->prepare('SELECT DATE_FORMAT(studiedon,\'%d\') as date, sum(timelength) FROM studydata GROUP BY studiedon');
-foreach($everydate as $eachdate) {
-        if (array_search($eachdate, $timelength)) {
-            echo $eachdate . ',' . PHP_EOL;
-        }else{
-            echo 0 . ',' . PHP_EOL;
-        }
-    }
+// $timelength_date = $pdo->prepare('SELECT studied_on, sum(timelength) FROM studydata GROUP BY studiedon');
+// $timelength_date->execute();
+// $timelength = $timelength_date->fetchAll();
+// var_dump($timelength);
+
+// foreach($timelength as $eachdate) {
+//         if (array_search(0, $eachdate)) {
+//             echo $eachdate . ',' . PHP_EOL;
+//         }else{
+//             echo 0 . ',' . PHP_EOL;
+//         }
+//     }
 
 ?>
 
