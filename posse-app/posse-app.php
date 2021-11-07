@@ -1,50 +1,9 @@
 <?php
 require('requiresql.php');
 
-// $stmt = $pdo->query('SELECT timelength FROM studydata');
-// $stmt->execute();
-// $timelength = $stmt->fetchAll();
-// print_r($timelength);
-
-$datelabels = range(1,date('t'));
-foreach($datelabels as $key => $bargraphlabels){
-  echo '\'' . $bargraphlabels . '\''. ',' . PHP_EOL;
-
-if ($bargraphlabels == end($datelabels)) {
-  echo '\'' . $bargraphlabels . '\'' . PHP_EOL;
-}
-}
-
-// $pdo = new PDO('mysql:dbname=posseapp; host=db; charset=utf8mb4', 'mikiharu', 'password');
-// $stmt = $pdo->prepare('SELECT * FROM studydata');
-// $stmt->execute();
-// $timelength = $stmt->fetchAll();
-// var_dump($stmt);
-
-// $stmt = $pdo->prepare('SELECT timelength FROM studydata GROUP BY studiedon');
-// $stmt->execute();
-// $timelength = $stmt->fetchAll();
-
-// 1を　01にしたい　TODO
-// $range = range(1,date('t'));
-// foreach 
-// $range = (int)$range;
-// echo $range;
-
-
-// $timelength_date = $pdo->prepare('SELECT DATE_FORMAT(studiedon,\'%d\') as date, sum(timelength) FROM studydata GROUP BY studiedon');
-// $timelength_date = $pdo->prepare('SELECT studied_on, sum(timelength) FROM studydata GROUP BY studiedon');
-// $timelength_date->execute();
-// $timelength = $timelength_date->fetchAll();
-// var_dump($timelength);
-
-// foreach($timelength as $eachdate) {
-//         if (array_search(0, $eachdate)) {
-//             echo $eachdate . ',' . PHP_EOL;
-//         }else{
-//             echo 0 . ',' . PHP_EOL;
-//         }
-//     }
+$stmt = $pdo->prepare('SELECT studied_on FROM studydata GROUP BY studied_on');
+$stmt->execute();
+$timelength = $stmt->fetchAll();
 
 ?>
 
@@ -73,17 +32,40 @@ if ($bargraphlabels == end($datelabels)) {
             <div class="hourBigBox">
                 <div class="hourBox">
                     <span class="hourBoxTitle">Today</span>
-                    <span class="todayNo">3</span>
+                    <span class="todayNo">
+                    <?php     
+                        $today = date("Y-m-d");  
+                        $sth = $pdo->prepare('SELECT sum(timelength) as today_total FROM studydata WHERE studied_on = :today');
+                        $sth -> bindValue(':today', $today);
+                        $sth->execute();
+                        $todaystudytime = $sth->fetchAll();
+                        echo $todaystudytime['today_total'] ?? 0;
+                        ?>
+                    </span>
                     <span class="hour">hour</span>
                 </div>
                 <div class="hourBox">
                     <span class="hourBoxTitle">Month</span>
-                    <span class="monthNo">120</span>
+                    <span class="monthNo">
+                        <?php
+                        $stmt = $pdo->prepare("SELECT SUM(timelength) as month_total FROM studydata WHERE DATE_FORMAT(studied_on, '%Y%m') = DATE_FORMAT(now(), '%y%m');");
+                        $stmt->execute();
+                        $monthstudytime =$stmt->fetchAll();
+                        echo $monthstudytime['month_total'] ?? 0;
+                        ?>
+                    </span>
                     <span class="hour">hour</span>
                 </div>
                 <div class="hourBox">
                     <span class="hourBoxTitle">Total</span>
-                    <span class="totalNo">1348</span>
+                    <span class="totalNo">
+                        <?php        
+                        $stmt = $pdo->prepare('SELECT sum(timelength) as total FROM studydata');
+                        $stmt->execute();
+                        $totalstudytime= $stmt->fetch();
+                        echo $totalstudytime["total"];
+                        ?>
+                    </span>
                     <span class="hour">hour</span>
                 </div>
             </div>
@@ -98,23 +80,35 @@ if ($bargraphlabels == end($datelabels)) {
                 <div class="piechartTitle">学習言語</div>
                 <!-- <img src="gengoguraff.png" alt="piechart.language" class="langPiechart"> -->
                 <canvas id="langPiechart" class="langPiechart" width="100" height="100"></canvas>
-                <li class="uljavascript">Javascript</li>
-                <li class="CSS">CSS</li>
-                <li class="PHP">PHP</li>
-                <li class="HTML">HTML</li>
-                <li class="Laravel">Laravel</li>
-                <li class="SQL">SQL</li>
-                <li class="SHELL">SHELL</li>
-                <li class="jyohou">情報基礎知識(その他)</li>
+                <?php 
+                    $stmt = $pdo->prepare('SELECT * FROM languages');
+                    $stmt->execute();
+                    $languagelabels = $stmt->fetchAll();
+                    foreach($languagelabels as $languagelabel):
+                ?>
+                <li>
+                    <p class="<?= $languagelabel['language'] ?>" style="background: #<?= $languagelabel['lang_color']?>;"></p>
+                    <?= $languagelabel['language'] ?>
+                </li>
+                <?php endforeach; ?>
+
             </div>
 
             <div class="contentsBigBox">
                 <div class="piechartTitle">学習コンテンツ</div>
                 <!-- <img src="conteguraff.png" alt="piechart.contents" class="contPiechart"> -->
                 <canvas id="contPiechart" class="contPiechart"></canvas>
-                <li class="dotinstall">ドットインストール</li>
-                <li class="nyobi">N予備校</li>
-                <li class="posseassignment">POSSE課題</li>
+                <?php 
+                    $stmt = $pdo->prepare('SELECT * FROM contents');
+                    $stmt->execute();
+                    $contentlabels = $stmt->fetchAll();
+                    foreach($contentlabels as $contentlabel):
+                ?>
+                <li>
+                    <p class="<?= $contentlabel['content'] ?>" style="background: #<?= $contentlabel['content_color']?>;"></p>
+                    <?= $contentlabel['content'] ?>
+                </li>
+                <?php endforeach; ?>
             </div>
         </div>
 
@@ -137,29 +131,22 @@ if ($bargraphlabels == end($datelabels)) {
                         readonly="readonly">
                     <h3>学習コンテンツ(複数選択可)</h3>
                     <ul>
-                        <label class="modal-checkbox"><input class="modal-checkboxInput" type="checkbox">N予備校</label>
-                        <label class="modal-checkbox"><input class="modal-checkboxInput"
-                                type="checkbox">ドットインストール</label>
-                        <label class="modal-checkbox"><input class="modal-checkboxInput" type="checkbox">POSSE課題</label>
+                    <?php
+                        foreach($contentlabels as $contentlabel):
+                    ?>
+                        <label class="modal-checkbox"><input class="modal-checkboxInput" type="checkbox"><?= $contentlabel['content'] ?></label>
+                    <?php endforeach; ?>
+
                     </ul>
                     <h3>学習言語(複数選択可)</h3>
                     <ul>
-                        <label for="HTML" class="modal-checkbox"><input name="HTML" class="modal-checkboxInput"
-                                type="checkbox">HTML</label>
-                        <label for="CSS" class="modal-checkbox"><input name="CSS" class="modal-checkboxInput"
-                                type="checkbox">CSS</label>
-                        <label for="JAVASCRIPT" class="modal-checkbox"><input name="JAVASCRIPT"
-                                class="modal-checkboxInput" type="checkbox">Javascript</label>
-                        <label for="PHP" class="modal-checkbox"><input name="PHP" class="modal-checkboxInput"
-                                type="checkbox">PHP</label>
-                        <label for="LARAVEL" class="modal-checkbox"><input name="LARAVEL" class="modal-checkboxInput"
-                                type="checkbox">Laravel</label>
-                        <label for="SQL" class="modal-checkbox"><input name="SQL" class="modal-checkboxInput"
-                                type="checkbox">SQL</label>
-                        <label for="SHELL" class="modal-checkbox"><input name="SHELL" class="modal-checkboxInput"
-                                type="checkbox">SHELL</label>
-                        <label for="JYOHO" class="modal-checkbox"><input name="JYOHO" class="modal-checkboxInput"
-                                type="checkbox">情報システム基礎知識(その他)</label>
+                        <?php
+                        foreach($languagelabels as $languagelabel):
+                        ?>
+                        <label for="<?= $languagelabel['language'] ?>" class="modal-checkbox"><input name="<?= $languagelabel['language'] ?>" class="modal-checkboxInput"
+                                type="checkbox"><?= $languagelabel['language'] ?></label>
+
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="modal-righthalf">

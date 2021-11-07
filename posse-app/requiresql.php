@@ -1,7 +1,8 @@
 <?PHP
 try {
+    $dsn = 'mysql:dbname=posseapp;host=db;charset=utf8mb4';
     $pdo = new PDO(
-        'mysql:host=db;dbname=posseapp;charset=utf8mb4',
+        $dsn,
         'mikiharu',
         'password',
         [
@@ -16,9 +17,6 @@ try {
     exit;
   };
 
-$pdo = new PDO('mysql:dbname=posseapp;host=db;charset=utf8mb4', 'mikiharu', 'password');
-$stmt = $pdo->prepare('SELECT timelength FROM studydattta');
-$res = $stmt->execute();
-$data = $stmt->fetch();
-print_r($data);
+$dsn = 'mysql:dbname=posseapp;host=db;charset=utf8mb4';
+$pdo = new PDO($dsn, 'mikiharu', 'password');
  ?>
