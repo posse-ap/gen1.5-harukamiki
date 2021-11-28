@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <title>Quizy Writing</title>
+    <title>Laravel Quizy</title>
 </head>
 
 <body>
     <h1>ガチで東京の人しか解けない！＃東京の難読地名クイズ</h1> 
-
+    <section id="quizyOutputBox"></section>
       <script src="{{ asset('/js/quizy.js') }}"></script>
 </body>
 
