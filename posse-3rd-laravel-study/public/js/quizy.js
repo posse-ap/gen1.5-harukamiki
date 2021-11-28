@@ -58,7 +58,10 @@ var onclickFunction = function (question, clicked) {
     clickedOption.className= 'wrongAnswer';
     answerOption.className= 'rightAnswer';
 
-    if(clickedOption == answerOption){
+    console.log("clickedoption =" + clickedOption);
+    console.log("answeroption =" + answerOption);
+
+    if(clicked == 0){
         console.log('反応してるよ');
         answerTitle.innerText = '正解！';
         answerTitle.className = 'rightUnderbar';
