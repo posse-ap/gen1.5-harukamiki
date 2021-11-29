@@ -31,25 +31,23 @@ images.push('https://d1khcm40x1j0f.cloudfront.net/quiz/512b8146e7661821c45dbb8fe
 
 var quizyOutputBox = document.getElementById('quizyOutputBox')
 for (let i = 0; i < choices.length; i++) {
-    let h =  `<div class="question" id="question${i+1}">`
-        + `<h2>${i + 1}.この地名はなんて読む？</h2>`
-        + `<img src="${images[i]}" alt="高輪photo">`
-        + '<ul>'
-        + ` <li id="choice${i}-0" name="choicesName" onclick="onclickFunction(${i},0)">${choices[i][0]}</li>`
-        + `<li id="choice${i}-1" name="choicesName" onclick="onclickFunction(${i},1)">${choices[i][1]}</li>`
-        + `<li id="choice${i}-2" name="choicesName" onclick="onclickFunction(${i},2)">${choices[i][2]}</li>`
-        + '</ul>'
-        + `<div id="answerBox${i}" class="answerBox">`
-        + `<div id="answerBox${i}" class="answerBox">`
-        + `<p id="answerTitleTrue${i}" class="answerTitle">正解！</p>`
-        + `<p id="answerTitleFalse${i}" class="answerTitle">不正解！</p>`
-        + `<p id="answerExplanation${i}" class="answerExplanation">正解は「${choices[i][0]}」です！</p>`
-        + '</div>'
+    let h =  
+        `<div class="question" id="question${i+1}">`
+        +   `<h2>${i + 1}.この地名はなんて読む？</h2>`
+        +   `<img src="${images[i]}" alt="高輪photo">`
+        +   '<ul>'
+        +     `<li id="choice${i}-0" name="choicesName" onclick="onclickFunction(${i},0)">${choices[i][0]}</li>`
+        +     `<li id="choice${i}-1" name="choicesName" onclick="onclickFunction(${i},1)">${choices[i][1]}</li>`
+        +     `<li id="choice${i}-2" name="choicesName" onclick="onclickFunction(${i},2)">${choices[i][2]}</li>`
+        +   '</ul>'
+        +   `<div id="answerBox${i}" class="answerBox">`
+        +     `<p id="answerTitleTrue${i}" class="answerTitle">正解！</p>`
+        +     `<p id="answerTitleFalse${i}" class="answerTitle">不正解！</p>`
+        +     `<p id="answerExplanation${i}" class="answerExplanation">正解は「${choices[i][0]}」です！</p>`
+        +   '</div>'
         + '</div>';
 
-        // ↓↓
     document.write(h);
-    // quizyOutputBox.appendChild(quizywords);
     document.getElementById(`answerExplanation${i}`).style.display = 'none';
 };
 
@@ -66,7 +64,7 @@ var onclickFunction = function (question, clicked) {
     document.getElementById('choice' + question + `-${t}`).style.pointerEvents ="none"; 
 }
     
-    document.getElementById('answerExplanation'+question).style.display = 'block';
+    document.getElementById('answerExplanation'+ question).style.display = 'block';
     answerBox.style.display = 'block';
     
     clickedOption.className= 'wrongAnswer';
