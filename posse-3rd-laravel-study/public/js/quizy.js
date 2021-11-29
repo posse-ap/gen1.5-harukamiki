@@ -41,8 +41,7 @@ for (let i = 0; i < choices.length; i++) {
         +     `<li id="choice${i}-2" name="choicesName" onclick="onclickFunction(${i},2)">${choices[i][2]}</li>`
         +   '</ul>'
         +   `<div id="answerBox${i}" class="answerBox">`
-        +     `<p id="answerTitleTrue${i}" class="answerTitle">正解！</p>`
-        +     `<p id="answerTitleFalse${i}" class="answerTitle">不正解！</p>`
+        +     `<p id="answerTitle${i}" class="answerTitle"></p>`
         +     `<p id="answerExplanation${i}" class="answerExplanation">正解は「${choices[i][0]}」です！</p>`
         +   '</div>'
         + '</div>';
@@ -52,13 +51,12 @@ for (let i = 0; i < choices.length; i++) {
 };
 
 
-// ↓↓クリックしても正解ボタンらへんが出ない
+// ↓↓クリックしても正解！らへんが出ない
 var onclickFunction = function (question, clicked) {
     let clickedOption = document.getElementById('choice' + question + '-' + clicked);
     let answerOption = document.getElementById('choice' + question + '-0');
     let answerBox = document.getElementById('answerBox' + question);
-    let answerTitleTrue = document.getElementById('answerTitleTrue' + question);
-    let answerTitleFalse = document.getElementById('answerTitleFalse' + question);
+    let answerTitle = document.getElementById('answerTitle' + question);
    
     for (let t=0; t<3; t++){
     document.getElementById('choice' + question + `-${t}`).style.pointerEvents ="none"; 
@@ -66,7 +64,8 @@ var onclickFunction = function (question, clicked) {
     
     document.getElementById('answerExplanation'+ question).style.display = 'block';
     answerBox.style.display = 'block';
-    
+    answerTitle.style.display = 'inline-block';
+
     clickedOption.className= 'wrongAnswer';
     answerOption.className= 'rightAnswer';
 
@@ -75,11 +74,11 @@ var onclickFunction = function (question, clicked) {
 
     if(clicked == 0){
         console.log('反応してるよ');
-        answerTitleTrue.style.display = 'block';
-        answerTitleTrue.className = 'rightUnderbar';
+        answerTitle.textContent = '正解!';
+        answerTitle.className = 'rightUnderbar';
     }else{
         console.log('反応してないよ');
-        answerTitleFalse.style.display = 'block';
-        answerTitleFalse.className = 'wrongUnderbar';
+        answerTitle.textContent = '不正解!';
+        answerTitle.className = 'wrongUnderbar';
     }
 }
