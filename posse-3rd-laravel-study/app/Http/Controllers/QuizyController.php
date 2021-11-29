@@ -5,7 +5,13 @@ namespace App\Http\Controllers;
  
 class QuizyController extends Controller
 {
-  public function showpage() {
+  public function tokyo() {
+    return view('quizy');
+    
+  }
+
+  public function hiroshima() {
     return view('quizy');
   }
+
 }

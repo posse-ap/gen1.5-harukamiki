@@ -17,4 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/quizy','QuizyController@showpage');
+Route::get('/quiz/1','QuizyController@tokyo');
+Route::get('/quiz/2','QuizyController@hiroshima');
