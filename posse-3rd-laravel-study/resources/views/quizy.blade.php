@@ -31,6 +31,28 @@
         document.write(h);
         document.getElementById(`answerExplanation${i}`).style.display = 'none';
     };
+
+    {{-- <?php foreach($questions as $question){
+        $numbers = [0,1,2];
+        shuffle($numbers);
+        print_r($numbers);
+        // shuffle($question);
+        $question_number = $question['id'] -1;?> --}}
+
+        {{-- <div class="monnme<?= $question_number +1?>" id="monnme<?= $question_number +1?>">
+        <h2><?= $question_number +1?>. この地名はなんて読む？</h2>
+        <img src= "<?=$images[$question_number] ?>" alt="No.<?=$question_number ?>.photo">
+        <ul>
+        <li id="option<?=$question_number?>-<?=$numbers[0]?>" onclick="clickedFunction(<?=$question_number ?>,<?=$numbers[0]?>)"><?= $questions[$question_number]['choice' . ($numbers[0]+1)] ?></li>
+        <li id="option<?=$question_number?>-<?=$numbers[1]?>" onclick="clickedFunction(<?=$question_number ?>,<?=$numbers[1]?>)"><?= $questions[$question_number]['choice' . ($numbers[1]+1)] ?></li>
+        <li id="option<?=$question_number?>-<?=$numbers[2]?>" onclick="clickedFunction(<?=$question_number ?>,<?=$numbers[2]?>)"><?= $questions[$question_number]['choice' . ($numbers[2]+1)] ?></li>
+        </ul>
+        <div id="answerBox<?= $question_number ?>">
+        <p id="seikai<?= $question_number ?>"></p>
+        <p id="seikaiexp<?= $question_number ?>" class="hide">正解は「<?= $answerBoxAnswer[$question_number]?>」です！</p>
+        </div> --}}
+        {{-- <?php }; ?> --}}
+        
       <script src="{{ asset('/js/quizy.js') }}"></script>
 </body>
 
