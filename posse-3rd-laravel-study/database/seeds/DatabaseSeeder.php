@@ -11,8 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(QuizyTokyoTableSeeder::class);
+        $this->call(QuizyTableSeeder::class);
+        $this->call(QuizyAreaTableSeeder::class);
     }
 }
-
-// seederを登録したいが登録にエラーでる
