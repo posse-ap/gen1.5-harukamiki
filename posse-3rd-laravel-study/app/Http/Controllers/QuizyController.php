@@ -2,6 +2,7 @@
  
 namespace App\Http\Controllers;
 
+use App\Quizy;
 use Illuminate\Http\Request;
 
 // use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class QuizyController extends Controller
     $data = [
       'id' => $request->id
     ];
-    return view('quizy', $data);
+    $items = Quizy::all();
+    return view('quizy', $data, ['items' => '$items']);
   }
 
 

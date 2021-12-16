@@ -1,3 +1,4 @@
+@section('Quizydb', 'quizy')
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -10,10 +11,16 @@
 </head>
 
 <body>
+
+    @foreach (items as $item)
+    <p>{{ $item-> area }}</p>
+    @endforeach
     <h1>ガチで東京の人しか解けない！＃東京の難読地名クイズ</h1> 
 
       <script src="{{ asset('/js/quizy.js') }}"></script>
-      
+
 </body>
 
 </html>
+
+@endsection
