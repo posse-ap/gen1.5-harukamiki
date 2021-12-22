@@ -1,4 +1,5 @@
 @section('Quizydb', 'quizy')
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -12,9 +13,17 @@
 
 <body>
 
-    @foreach (items as $item)
+<table>
+@section('content')
+    <tr><th>でた？</th></tr>
+    <td>{{ $item->getData() }}</td>
+@endsection
+</table>
+
+    {{-- @foreach ($items as $item)
     <p>{{ $item-> area }}</p>
-    @endforeach
+    @endforeach  --}}
+
     <h1>ガチで東京の人しか解けない！＃東京の難読地名クイズ</h1> 
 
       <script src="{{ asset('/js/quizy.js') }}"></script>
@@ -23,4 +32,4 @@
 
 </html>
 
-@endsection
+{{-- @endsection --}}

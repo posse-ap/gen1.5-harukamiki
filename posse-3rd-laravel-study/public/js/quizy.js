@@ -5,8 +5,6 @@ console.log("できてるよ");
 
 let choices = Array();
 choices.push(["たかなわ", "たかわ", "こうわ"]);
-choices.push(["かめいど", "かめど", "かめと"]);
-choices.push(["たかなわ", "たかわ", "こうわ"]);
 choices.push(["かめいど", "かめと", "かめど"]);
 choices.push(["こうじまち", "おかとまち", "かゆまち"]);
 choices.push(["おなりもん", "おかどもん", "ごせいもん"]);
@@ -34,7 +32,7 @@ for (let i = 0; i < choices.length; i++) {
     let h =  
         `<div class="question" id="question${i+1}">`
         +   `<h2>${i + 1}.この地名はなんて読む？</h2>`
-        +   `<img src="${images[i]}" alt="高輪photo">`
+        +   `<img src="${images[i]}" alt="photo${i}">`
         +   '<ul>'
         +     `<li id="choice${i}-0" name="choicesName" onclick="onclickFunction(${i},0)">${choices[i][0]}</li>`
         +     `<li id="choice${i}-1" name="choicesName" onclick="onclickFunction(${i},1)">${choices[i][1]}</li>`

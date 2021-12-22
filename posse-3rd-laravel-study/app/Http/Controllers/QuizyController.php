@@ -5,16 +5,15 @@ namespace App\Http\Controllers;
 use App\Quizy;
 use Illuminate\Http\Request;
 
-// use Illuminate\Http\Request;
- 
+use Illuminate\Support\Facades\DB;
+use QuizyTableSeeder;
+
 class QuizyController extends Controller
 {
   public function index(Request $request) {
-    $data = [
-      'id' => $request->id
-    ];
-    $items = Quizy::all();
-    return view('quizy', $data, ['items' => '$items']);
+
+    // return view('quizy', ['items' => $items]);
+    return view('quizy');
   }
 
 
