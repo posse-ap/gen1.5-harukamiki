@@ -17,6 +17,8 @@ class QuizyController extends Controller
     $question_choices = Question::all();
     $question_choices = $question_choices->where('area', '==', $area_id);
 
+    // $see = Quizy_area::find(1);
+    // dd($see);
     $quizy_areas = Quizy_area::all();
     $quizy_areas = $quizy_areas->where('id', '==', $area_id);
     // dd($quizy_area);
