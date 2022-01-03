@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Quizy_area;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,10 @@ class QuizyController extends Controller
 
     $question_choices = Question::all();
     $question_choices = $question_choices->where('area', '==', $area_id);
-    // dd($question_choice);
-    return view('users.quizy', compact('question_choices'));
+
+    $quizy_areas = Quizy_area::all();
+    $quizy_areas = $quizy_areas->where('id', '==', $area_id);
+    // dd($quizy_area);
+    return view('users.quizy', compact('question_choices', 'quizy_areas'));
   }
 }

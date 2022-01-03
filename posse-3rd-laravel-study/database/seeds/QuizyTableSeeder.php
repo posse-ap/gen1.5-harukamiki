@@ -12,6 +12,7 @@ class QuizyTableSeeder extends Seeder
      */
     public function run()
     {
+        //////////////////////////////////////// 東京ページのレコード//////////////////////////
         $param = [
             'area' => 1,
             'choice1' =>'たかなわ',
@@ -87,6 +88,86 @@ class QuizyTableSeeder extends Seeder
             'choice3' =>'こばく'
         ];
         DB::table('questions')->insert($param);
+        
+        /////////////////////////////////////// 広島ページのレコード///////////////////////
+        $param = [
+            'area' => 2,
+            'choice1' =>'むかいなだ',
+            'choice2' =>'むこうひら',
+            'choice3' =>'むきひら',
+        ];
+        DB::table('questions')->insert($param);
+        
+        $param = [
+            'area' => 2,
+            'choice1' =>'みつぎ',
+            'choice2' =>'みよし',
+            'choice3' =>'おしらべ',
+        ];
+        DB::table('questions')->insert($param);
+        
+        $param = [
+            'area' => 2,
+            'choice1' =>'かなやま',
+            'choice2' =>'きやま',
+            'choice3' =>'ぎんざん',
+        ];
+        DB::table('questions')->insert($param);
 
+        $param = [
+            'area' => 2,
+            'choice1' =>'とよひ',
+            'choice2' =>'としか',
+            'choice3' =>'とよか',
+        ];
+        DB::table('questions')->insert($param);
+        
+        $param = [
+            'area' => 2,
+            'choice1' =>'いしぐろ',
+            'choice2' =>'いしあぜ',
+            'choice3' =>'しゃくぜ',
+        ];
+        DB::table('questions')->insert($param);
+        
+        $param = [
+            'area' => 2,
+            'choice1' =>'みよし',
+            'choice2' =>'みつぎ',
+            'choice3' =>'みかた',
+        ];
+        DB::table('questions')->insert($param);
+        
+        $param = [
+            'area' => 2,
+            'choice1' =>'うずい',
+            'choice2' =>'もみち',
+            'choice3' =>'くもおり',
+        ];
+        DB::table('questions')->insert($param);
+        
+        $param = [
+            'area' => 2,
+            'choice1' =>'すもも',
+            'choice2' =>'ぽんかん',
+            'choice3' =>'でこぽん',
+        ];
+        DB::table('questions')->insert($param);
+        
+        $param = [
+            'area' => 2,
+            'choice1' =>'おおちごとうげ',
+            'choice2' =>'おおちごえとうげ',
+            'choice3' =>'おうちごとうげ',
+        ];
+        DB::table('questions')->insert($param);
+        
+        $param = [
+            'area' => 2,
+            'choice1' =>'よおろほよばら',
+            'choice2' =>'てっぽよばら',
+            'choice3' =>'ていぼよはら',
+        ];
+        DB::table('questions')->insert($param);
     }
 }

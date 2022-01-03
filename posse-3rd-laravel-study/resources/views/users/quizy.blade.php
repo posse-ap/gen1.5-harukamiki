@@ -13,23 +13,30 @@
     @section('title', 'quizy')
 
     @section('content')
-    <h1>ガチで東京の人しか解けない！＃東京の難読地名クイズ</h1> 
+    {{-- TODO foreach以外の方法で取り出す --}}
+    <h1>ガチで 
+        @foreach ( $quizy_areas as $quizy_area)
+            {{ $quizy_area->area }}の人しか解けない！＃{{$quizy_area->area }}
+        @endforeach
+    の難読地名クイズ</h1> 
 
-    @foreach ($question_choices as $question_choice)
+    <?php $counter = 1; ?>
+    @foreach ($question_choices as $index => $question_choice)
 
-    <div class="question" id="question{{ $question_choice->id}}">
-        <h2>{{ $question_choice->id}}.この地名はなんて読む？</h2>
-        <img src="{{ asset('image/image' . $question_choice->area . '-' . $question_choice->id) . '.png'}}" alt="image{{$question_choice->id}}">
+    <div class="question" id="question<?= $counter ?>">
+        <h2><?= $counter ?>.この地名はなんて読む？</h2>
+        <img src="{{ asset('image/image' . $question_choice->area . '-' . $counter . '.png')}}" alt="image{{ $question_choice->area }}-{{$index}}.png">
         <ul>
-            <li id="choice{{ $question_choice->id}}-0" name="choicesName" onclick="onclickFunction({{ $question_choice->id}},0)">{{ $question_choice->choice1}}</li>
-            <li id="choice{{ $question_choice->id}}-1" name="choicesName" onclick="onclickFunction({{ $question_choice->id}},1)">{{ $question_choice->choice2}}</li>
-            <li id="choice{{ $question_choice->id}}-2" name="choicesName" onclick="onclickFunction({{ $question_choice->id}},2)">{{ $question_choice->choice3}}</li>
+            <li id="choice<?= $counter ?>-0" name="choicesName" onclick="onclickFunction(<?= $counter ?>,0)">{{ $question_choice->choice1}}</li>
+            <li id="choice<?= $counter ?>-1" name="choicesName" onclick="onclickFunction(<?= $counter ?>,1)">{{ $question_choice->choice2}}</li>
+            <li id="choice<?= $counter ?>-2" name="choicesName" onclick="onclickFunction(<?= $counter ?>,2)">{{ $question_choice->choice3}}</li>
         </ul>
-        <div id="answerBox{{ $question_choice->id}}" class="answerBox">
-            <p id="answerTitle{{ $question_choice->id}}" class="answerTitle"></p>
-            <p id="answerExplanation{{ $question_choice->id}}" class="answerExplanation">正解は「{{ $question_choice->choice1}}」です！</p>
+        <div id="answerBox<?= $counter ?>" class="answerBox">
+            <p id="answerTitle<?= $counter ?>" class="answerTitle"></p>
+            <p id="answerExplanation<?= $counter ?>" class="answerExplanation">正解は「{{ $question_choice->choice1}}」です！</p>
         </div>
     </div>
+    <?php $counter++; ?>
         @endforeach
 
       <script src="{{ asset('/js/quizy.js') }}"></script>
