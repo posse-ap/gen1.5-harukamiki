@@ -15,12 +15,12 @@ class QuizyAreaTableSeeder extends Seeder
         $param = [
             'area' =>'東京',
         ];
-        DB::table('quizy_area')->insert($param);
+        DB::table('quizy_areas')->insert($param);
 
         $param = [
             'area' =>'広島',
         ];
         
-        DB::table('quizy_area')->insert($param);
+        DB::table('quizy_areas')->insert($param);
     }
 }

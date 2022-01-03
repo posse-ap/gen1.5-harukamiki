@@ -19,11 +19,11 @@
 
     <div class="question" id="question{{ $question_choice->id}}">
         <h2>{{ $question_choice->id}}.この地名はなんて読む？</h2>
-        <img src="{{ asset('image/image' . $question_choice->id) . '.png'}}" alt="image{{$question_choice->id}}">
+        <img src="{{ asset('image/image' . $question_choice->area . '-' . $question_choice->id) . '.png'}}" alt="image{{$question_choice->id}}">
         <ul>
-            <li id="choice{{ $question_choice->id}}-0" name="choicesName" onclick="onclickFunction(${i},0)">{{ $question_choice->choice1}}</li>
-            <li id="choice{{ $question_choice->id}}-1" name="choicesName" onclick="onclickFunction(${i},1)">{{ $question_choice->choice2}}</li>
-            <li id="choice{{ $question_choice->id}}-2" name="choicesName" onclick="onclickFunction(${i},2)">{{ $question_choice->choice3}}</li>
+            <li id="choice{{ $question_choice->id}}-0" name="choicesName" onclick="onclickFunction({{ $question_choice->id}},0)">{{ $question_choice->choice1}}</li>
+            <li id="choice{{ $question_choice->id}}-1" name="choicesName" onclick="onclickFunction({{ $question_choice->id}},1)">{{ $question_choice->choice2}}</li>
+            <li id="choice{{ $question_choice->id}}-2" name="choicesName" onclick="onclickFunction({{ $question_choice->id}},2)">{{ $question_choice->choice3}}</li>
         </ul>
         <div id="answerBox{{ $question_choice->id}}" class="answerBox">
             <p id="answerTitle{{ $question_choice->id}}" class="answerTitle"></p>
@@ -31,8 +31,8 @@
         </div>
     </div>
         @endforeach
-        
-      {{-- <script src="{{ asset('/js/quizy.js') }}"></script> --}}
+
+      <script src="{{ asset('/js/quizy.js') }}"></script>
 
 </body>
 
