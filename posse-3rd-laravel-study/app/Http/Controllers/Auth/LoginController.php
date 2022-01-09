@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 
 class LoginController extends Controller
 {
@@ -35,10 +37,23 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        // ミドルウェアを呼び出す
+        $this->middleware('auth');
+        // $this->middleware('guest')->except('logout');
     }
 
     public function index(){
         return view('auth.login');
+    }
+
+    public function login(){
+    // 現在認証されているユーザーの取得
+    $user = Auth::user();
+    // 現在認証されているユーザーのID取得
+    $id = Auth::id();
+    
+    $param = ['user' => $user, 'id' => $id];
+
+        return view('users.quizy', $param);
     }
 }

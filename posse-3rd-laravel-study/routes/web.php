@@ -20,8 +20,12 @@ Route::get('/', function () {
 // ログインページ
 Route::get('/login', 'Auth\LoginController@index');
 // Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
+Route::post('/login', 'Auth\LoginController@login');
 // Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // quizyのページ
 Route::get('/quiz/{id?}','QuizyController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

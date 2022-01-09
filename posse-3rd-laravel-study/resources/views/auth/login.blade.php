@@ -15,7 +15,7 @@
             <input id="email" type="email" placeholder="メールアドレス" >
             {{-- @error('email')
             @enderror --}}
-
+            
             <label for="password">password</label>
             <input id="password" type="password" placeholder="パスワード" >
             {{-- @error('password')
@@ -26,6 +26,12 @@
     </main>
     </body>
     @section('content')
+    @if(Auth::check())
+        <p>USER: {{ $user->name . '(' . $user->email . ')' }}</p>    
+    @else
+        <p>ログインしていません(<a href="/login">ログイン</a>)
+        <a href="/register">登録</a></p>
+    @endif
 @endsection
 
 </html>
