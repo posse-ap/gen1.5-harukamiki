@@ -29,6 +29,9 @@ Route::get('/', function () {
 // quizyのページ
 Route::get('/quiz/{id?}','QuizyController@index')->middleware('auth');
 
+// 質問内容CRUDページ
+Route::resource('/crud', 'QuestionsEditController');
+
 Auth::routes();
 // TODO 調べる↑
 
