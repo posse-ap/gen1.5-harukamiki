@@ -37,7 +37,7 @@ class QuestionsEditController extends Controller
     public function store(Request $request)
     {
         Quizy_area::create($request->all());
-        return redirect()->route('admin.index')->with('success', '新規登録完了しました');
+        return redirect()->route('crud.index')->with('success', '新規登録完了しました');
     }
 
     /**
@@ -74,10 +74,12 @@ class QuestionsEditController extends Controller
     public function update(Request $request, $id)
     {
         $update = [
-            'area' => $request->area
+            'area' => $request->name,
+            'id' => $id
         ];
         Quizy_area::where('id', $id)->update($update);
-        return back()->with('success', '編集完了しました');
+        // return back()->with('success', '編集完了しました');
+        return redirect('/crud')->with('success', '編集完了しました');
     }
 
     /**
@@ -89,6 +91,6 @@ class QuestionsEditController extends Controller
     public function destroy($id)
     {
         Quizy_area::where('id', $id)->delete();
-        return redirect()->route('admin.index')->with('success', '削除完了しました');
+        return redirect('/')->with('success', '削除完了しました');
     }
 }
