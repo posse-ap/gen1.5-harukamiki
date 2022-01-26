@@ -9,12 +9,30 @@ class QuestionsEditController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $quizy_areas = Quizy_area::all();
+        // $quizy_areas = Quizy_area::all();
+        $order = $request->input('order');
+        if($order==null){
+            // 通常時
+            $quizy_areas = Quizy_area::orderBy('id','asc')->get();
+        }elseif($order=='backward'){
+            // 逆順
+            $quizy_areas = Quizy_area::orderBy('id','desc')->get();
+        }elseif($order=='byupdate'){
+            // 更新順
+            $quizy_areas = Quizy_area::orderBy('updated_at')->get();
+        }
+
+        //それ以外の処理
+        switch ($request->order){
+            case 1: return redirect('/?order=backward');
+            break;
+            case 2: return redirect('/?order=byupdate');
+            break;
+        }
         return view('admin.index', compact('quizy_areas'));
     }
 

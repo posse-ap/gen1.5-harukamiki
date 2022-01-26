@@ -1,5 +1,14 @@
 <h1>一覧画面</h1>
-<p><a href={{route('crud.create')}}>新規追加</a></p>
+
+<button>
+    <a href={{route('crud.create')}}>新規追加</a>
+</button>
+<button>
+    <a href="/crud?order=backward" class="">逆順</a>
+</button>
+<button>
+    <a href="/crud?order=byupdate" class="">更新順</a>
+</button>
 
 @if ($message = Session::get('success'))
 <p>{{ $message }}</p>
