@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
 use Illuminate\Http\Request;
 use App\Quizy_area;
 
@@ -66,8 +67,11 @@ class QuestionsEditController extends Controller
      */
     public function show($id)
     {
-        $area = Quizy_area::find($id);
-        return view('admin.show', compact('area'));
+        // $area = Quizy_area::find($id);
+        $questions = Question::query();
+        $choices= $questions->where('area','like',$id)->get();
+
+        return view('admin.show', compact('choices'));
     }
 
     /**

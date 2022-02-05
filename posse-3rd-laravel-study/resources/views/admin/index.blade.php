@@ -7,9 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body>
-<h1>一覧画面</h1>
 
+<body class="col-sm-8">
+<h1 class="ml-1">一覧画面</h1>
+
+<div class="ml-1">
 <button class="btn btn-primary mb-3">
     <a href={{route('crud.create')}} class="link-light">新規追加</a>
 </button>
@@ -19,6 +21,7 @@
 <button class="btn btn-primary mb-3">
     <a href="/crud?order=byupdate" class="link-light">更新順</a>
 </button>
+</div>
 
 @if ($message = Session::get('success'))
 <p>{{ $message }}</p>

@@ -6,7 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    // public function quizy_area(){
-    //     return $this->hasMany(Quizy_area::class);
-    // }
+    protected $fillable = ['area','choice1','choice2','choice3']; //保存したいカラム名が複数の場合
 }

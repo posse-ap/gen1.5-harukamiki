@@ -32,6 +32,8 @@ Route::get('/quiz/{id?}','QuizyController@index')->middleware('auth');
 // 質問内容CRUDページ
 Route::resource('/crud', 'QuestionsEditController');
 
+//選択肢CRUDページ
+Route::resource('/choicecrud', 'ChoiceEditController');
 
 Auth::routes();
 // TODO 調べる↑

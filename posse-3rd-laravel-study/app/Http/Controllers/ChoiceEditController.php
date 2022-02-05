@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Question;
+use App\Quizy_area;
 use Illuminate\Http\Request;
 
 class ChoiceEditController extends Controller
@@ -13,7 +14,7 @@ class ChoiceEditController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.show');
     }
 
     /**
@@ -34,7 +35,11 @@ class ChoiceEditController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Question::create($request->all());
+        $questions = Question::query();
+        $choices= $questions->where('area','like',$request->area)->get();
+
+        return view('admin.show', compact('choices'));
     }
 
     /**
@@ -45,7 +50,9 @@ class ChoiceEditController extends Controller
      */
     public function show($id)
     {
-        //
+        $questions = Question::query();
+        $choices= $questions->where('area','like',$id)->get();
+        return view('admin.show', compact('choices'));
     }
 
     /**

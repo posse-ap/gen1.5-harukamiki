@@ -18,8 +18,9 @@ body{
 }
 
 img{
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width:70px;
+  margin: 0;
 }
 
 
