@@ -34,7 +34,7 @@ class QuestionsEditController extends Controller
             case 2: return redirect('/?order=byupdate');
             break;
         }
-        return view('admin.index', compact('quizy_areas'));
+        return view('admin.index', compact('quizy_areas',));
     }
 
     /**
@@ -67,11 +67,10 @@ class QuestionsEditController extends Controller
      */
     public function show($id)
     {
-        // $area = Quizy_area::find($id);
+        $area_id = $id;
         $questions = Question::query();
         $choices= $questions->where('area','like',$id)->get();
-
-        return view('admin.show', compact('choices'));
+        return view('admin.show', compact('choices', 'area_id'));
     }
 
     /**

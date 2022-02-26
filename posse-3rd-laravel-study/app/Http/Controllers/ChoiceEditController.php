@@ -35,11 +35,21 @@ class ChoiceEditController extends Controller
      */
     public function store(Request $request)
     {
-        Question::create($request->all());
+        $area_id = $request->area;
+
         $questions = Question::query();
         $choices= $questions->where('area','like',$request->area)->get();
 
-        return view('admin.show', compact('choices'));
+        // 写真保存
+        $new_question = new Question;
+         // name属性が'image1'のinputタグをファイル形式に、画像をpublic/avatarに保存
+         $image_path = $request->file('image1')->store('public/image/');
+         // 上記処理にて保存した画像に名前を付け、userテーブルのthumbnailカラムに、格納
+         $new_question->image1 = basename($image_path);
+         $new_question->save();
+//  エラーはここだよ！！！！！！！！！・・・・・・・・・/////////////
+        //  Question::create($request->all());
+        return view('admin.show', compact('choices', 'area_id'));
     }
 
     /**
@@ -84,8 +94,11 @@ class ChoiceEditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $area)
     {
-        //
+        Question::where('id', $id)->delete();
+        $questions = Question::query();
+        $choices= $questions->where('area','like',$id)->get();
+        return view('admin.show', compact('choices','area_id'))->with('success', '削除完了しました');
     }
 }
