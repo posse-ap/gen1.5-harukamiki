@@ -29,10 +29,10 @@ Route::get('/', function () {
 // quizyのページ
 Route::get('/quiz/{id?}','QuizyController@index')->middleware('auth');
 
-// 質問内容CRUDページ
+// 質問内容(東京/広島)CRUDページ
 Route::resource('/crud', 'QuestionsEditController');
 
-//選択肢CRUDページ
+//選択肢(高和あtかなわ)CRUDページ
 Route::resource('/choicecrud', 'ChoiceEditController');
 
 Auth::routes();

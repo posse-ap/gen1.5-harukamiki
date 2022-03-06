@@ -78,7 +78,7 @@ class ChoiceEditController extends Controller
     public function edit($id)
     {
         $choices = Question::find($id);
-        return view('admin.choices.index', compact('choices'));
+        return view('admin.choiceEdit', compact('choices'));
     }
 
     /**
@@ -91,12 +91,18 @@ class ChoiceEditController extends Controller
     public function update(Request $request, $id)
     {
             $update = [
-                'area' => $request->name,
-                'id' => $id
+                'choice1' => $request->choice1,
+                'choice2' => $request->choice2,
+                'choice3' => $request->choice3
+                // 写真もここに入れたい
             ];
-            Quizy_area::where('id', $id)->update($update);
+            Question::where('id', $id)->update($update);
             // return back()->with('success', '編集完了しました');
-            return redirect('/crud')->with('success', '編集完了しました');
+
+            $questions = Question::query();
+            $area = $request->area;
+            $choices= $questions->where('area','like',$area)->get();
+            return view('admin.show', compact('choices'))->with('success', '編集完了しました');
         }
 
     /**

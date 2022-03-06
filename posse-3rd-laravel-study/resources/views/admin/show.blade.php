@@ -23,8 +23,6 @@
     <tr>
         <td>{{ $index+1 }}</td>
         <td>
-            {{-- <img src="{{ asset('/' . $choice->image1 )}}"> --}}
-            {{-- <img src="{{ asset('storage/image/' . $choice->image1)}}"> --}}
             <img src="{{ asset('storage/image/' . $choice->image1)}}">
         </td>
         <td>{{ $choice->choice1 }}</td>
@@ -47,7 +45,7 @@
 <form action="{{ route('choicecrud.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form_group mb-3">
-        <input type="hidden" name="area" value="{{$area_id}}">
+        <input type="hidden" name="area" value="{{$choice->area}}">
     </div>
     
     <div class="form_group mb-3">
