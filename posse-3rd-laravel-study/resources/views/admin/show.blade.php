@@ -23,7 +23,9 @@
     <tr>
         <td>{{ $index+1 }}</td>
         <td>
-            <img src="{{ asset('image/' . $choice->image1 )}}">
+            {{-- <img src="{{ asset('/' . $choice->image1 )}}"> --}}
+            {{-- <img src="{{ asset('storage/image/' . $choice->image1)}}"> --}}
+            <img src="{{ asset('storage/image/' . $choice->image1)}}">
         </td>
         <td>{{ $choice->choice1 }}</td>
         <td>{{ $choice->choice2 }}</td>
@@ -34,35 +36,37 @@
                 @method('DELETE')
                 <input type="submit" name="" value="削除"  class="btn btn-default border btn-outline-secondary">
             </form>
+            <th><a href="{{ route('choicecrud.edit',[$choice->id])}}"  class="btn btn-default border btn-outline-secondary">編集</a></th>
         </td>
     </tr>
 <?php }; ?>
 </table>
 
-<div class="mt-3 ml-3">
+<div class="mt-3 ml-3 border">
 <h1>新規質問追加</h1>
 <form action="{{ route('choicecrud.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="area" value="{{$area_id}}">
-        <div class="form_group">
-            <label for="image1">画像</label>
-            <input type="file" id="image1" name="image1" value="">
-        </div>
-
-        <div class="form_group">
-            <label for="choice1">選択肢1</label>
-            <input type="text" name="choice1" value="選択肢1" id="choice1">
-        </div>
-
-        <div class="form_group">
-            <label for="choice2">選択肢2</label>
-            <input type="text" name="choice2" value="選択肢2" id="choice2">
-        </div>
-
-        <div class="form_group">
-            <label for="choice3">選択肢3</label>
-            <input type="text" name="choice3" value="選択肢3" id="choice3">
-        </div>
+    <div class="form_group mb-3">
+        <input type="hidden" name="area" value="{{$area_id}}">
+    </div>
+    
+    <div class="form_group mb-3">
+        <label for="image1">画像</label>
+        <input type="file" id="image1" name="image1" value="">
+    </div>
+    <div class="form_group mb-3">
+        <label for="choice1">選択肢1</label>
+        <input type="text" name="choice1" value="選択肢1" id="choice1">
+    </div>
+    <div class="form_group mb-3">
+        <label for="choice2">選択肢2</label>
+        <input type="text" name="choice2" value="選択肢2" id="choice2">
+    </div>
+    <div class="form_group mb-3">
+        <label for="choice3">選択肢3</label>
+        <input type="text" name="choice3" value="選択肢3" id="choice3">
+    </div>
+    
     <input type="submit" value="登録する">
 </form>
 </div>

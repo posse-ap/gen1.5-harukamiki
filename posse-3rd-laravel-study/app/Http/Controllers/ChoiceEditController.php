@@ -41,14 +41,18 @@ class ChoiceEditController extends Controller
         $choices= $questions->where('area','like',$request->area)->get();
 
         // 写真保存
-        $new_question = new Question;
-         // name属性が'image1'のinputタグをファイル形式に、画像をpublic/avatarに保存
-         $image_path = $request->file('image1')->store('public/image/');
-         // 上記処理にて保存した画像に名前を付け、userテーブルのthumbnailカラムに、格納
-         $new_question->image1 = basename($image_path);
-         $new_question->save();
-//  エラーはここだよ！！！！！！！！！・・・・・・・・・/////////////
-        //  Question::create($request->all());
+        // $new_question = new Question;
+         // name属性が'image1'のinputタグをファイル形式で、画像をpublic/imageに、ファイル名をgetClientOriginalName()で保存
+         $image_path = $request->file('image1')->storeAs('public/image/', $request->image1->getClientOriginalName());
+         
+
+         // 上記処理にて保存した画像に名前を付け、userテーブルのimageカラムに、格納
+        $new_question = request()->except(['_token']);
+        $new_question['image1'] = $request->image1->getClientOriginalName();
+        $new_question['area'] =$area_id;
+        //  $new_question->save();
+        $cli = Question::insert($new_question);
+
         return view('admin.show', compact('choices', 'area_id'));
     }
 
@@ -73,7 +77,8 @@ class ChoiceEditController extends Controller
      */
     public function edit($id)
     {
-        //
+        $choices = Question::find($id);
+        return view('admin.choices.index', compact('choices'));
     }
 
     /**
@@ -85,8 +90,14 @@ class ChoiceEditController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+            $update = [
+                'area' => $request->name,
+                'id' => $id
+            ];
+            Quizy_area::where('id', $id)->update($update);
+            // return back()->with('success', '編集完了しました');
+            return redirect('/crud')->with('success', '編集完了しました');
+        }
 
     /**
      * Remove the specified resource from storage.
