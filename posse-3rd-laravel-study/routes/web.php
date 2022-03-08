@@ -34,6 +34,7 @@ Route::resource('/crud', 'QuestionsEditController');
 
 //選択肢(高和あtかなわ)CRUDページ
 Route::resource('/choicecrud', 'ChoiceEditController');
+Route::get('/choicecrud/delete', 'ChoiceEditController@destroy')->name('destroy_question');
 
 Auth::routes();
 // TODO 調べる↑

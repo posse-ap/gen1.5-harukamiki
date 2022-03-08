@@ -111,11 +111,9 @@ class ChoiceEditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $area)
-    {
-        Question::where('id', $id)->delete();
-        $questions = Question::query();
-        $choices= $questions->where('area','like',$id)->get();
-        return view('admin.show', compact('choices','area_id'))->with('success', '削除完了しました');
+    public function destroy(Request $request)
+    {       
+        Question::where('id', $request['id'])->delete();
+        return back()->withInput();
     }
 }

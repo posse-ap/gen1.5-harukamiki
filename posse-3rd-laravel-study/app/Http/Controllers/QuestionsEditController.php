@@ -112,6 +112,6 @@ class QuestionsEditController extends Controller
     public function destroy($id)
     {
         Quizy_area::where('id', $id)->delete();
-        return redirect('/')->with('success', '削除完了しました');
+        return redirect('/crud')->with('success', '削除完了しました');
     }
 }

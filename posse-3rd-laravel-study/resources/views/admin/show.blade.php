@@ -29,9 +29,10 @@
         <td>{{ $choice->choice2 }}</td>
         <td>{{ $choice->choice3 }}</td>
         <td>
-            <form action="{{ route('choicecrud.destroy', [$choice->id, $choice->area])}}" method="POST">
+            <form action="{{ route('destroy_question')}}" method="POST">
                 @csrf
                 @method('DELETE')
+                <input type="hidden" name="id" value="{{ $choice->id }}"  class="">
                 <input type="submit" name="" value="削除"  class="btn btn-default border btn-outline-secondary">
             </form>
             <th><a href="{{ route('choicecrud.edit',[$choice->id])}}"  class="btn btn-default border btn-outline-secondary">編集</a></th>
