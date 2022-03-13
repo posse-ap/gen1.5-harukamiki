@@ -15,178 +15,120 @@ class QuizyTableSeeder extends Seeder
         //////////////////////////////////////// 東京ページのレコード//////////////////////////
         $param = [
             'area' => 1,
-            "image1" => 'image1-1.png',
-            'choice1' =>'たかなわ',
-            'choice2' =>'たかわ',
-            'choice3' =>'こうわ',
+            "image1" => 'image1-1.png'
         ];
         DB::table('questions')->insert($param);
         
         $param = [
             'area' => 1,
-            "image1" => 'image1-2.png',
-            'choice1' =>'かめいど',
-            'choice2' =>'かめと',
-            'choice3' =>'かめど'
+            "image1" => 'image1-2.png'
         ];
         DB::table('questions')->insert($param);
 
         $param = [
             'area' => 1,
-            "image1" => 'image1-3.png',
-            'choice1' =>'こうじまち',
-            'choice2' =>'かゆまち',
-            'choice3' =>'おかちまち'
+            "image1" => 'image1-3.png'
         ];
         DB::table('questions')->insert($param);
 
         $param = [
             'area' => 1,
-            "image1" => 'image1-4.png',
-            'choice1' =>'おなりもん',
-            'choice2' =>'おかどもん',
-            'choice3' =>'ごせいもん'
+            "image1" => 'image1-4.png'
         ];
         DB::table('questions')->insert($param);
 
         $param = [
             'area' => 1,
-            "image1" => 'image1-5.png',
-            'choice1' =>'とどろき',
-            'choice2' =>'たたりき',
-            'choice3' =>'たたら'
+            "image1" => 'image1-5.png'
         ];
         DB::table('questions')->insert($param);
 
         $param = [
             'area' => 1,
-            "image1" => 'image1-6.png',
-            'choice1' =>'しゃくじい',
-            'choice2' =>'せきこうい',
-            'choice3' => 'いじい'
+            "image1" => 'image1-6.png'
+        ];
+        DB::table('questions')->insert($param);
+
+        $param = [
+            'area' => 1,
+            "image1" => 'image1-7.png'
+        ];
+        DB::table('questions')->insert($param);
+
+        $param = [
+            'area' => 1,
+            "image1" => 'image1-8.png'
         ];
         DB::table('questions')->insert($param);
         $param = [
             'area' => 1,
-            "image1" => 'image1-7.png',
-            'choice1' => 'ぞうしき',
-            'choice2' => 'ぞうしき',
-            'choice3' => 'ざっしょく'
+            "image1" => 'image1-9.png'
         ];
         DB::table('questions')->insert($param);
         $param = [
             'area' => 1,
-            "image1" => 'image1-8.png',
-            'choice1' =>'おかちまち',
-            'choice2' =>'ごしろちょう',
-            'choice3' =>'みとちょう'
-        ];
-        DB::table('questions')->insert($param);
-        $param = [
-            'area' => 1,
-            "image1" => 'image1-9.png',
-            'choice1' =>'ししぼね',
-            'choice2' =>'ろっこつ',
-            'choice3' => 'しこね'
-        ];
-        DB::table('questions')->insert($param);
-        $param = [
-            'area' => 1,
-            "image1" => 'image1-10.png',
-            'choice1' =>'こぐれ',
-            'choice2' =>'こしゃく',
-            'choice3' =>'こばく'
+            "image1" => 'image1-10.png'
         ];
         DB::table('questions')->insert($param);
         
         /////////////////////////////////////// 広島ページのレコード///////////////////////
         $param = [
             'area' => 2,
-            "image1" => 'image2-1.png',
-            'choice1' =>'むかいなだ',
-            'choice2' =>'むこうひら',
-            'choice3' =>'むきひら',
+            "image1" => 'image2-1.png'
         ];
         DB::table('questions')->insert($param);
         
         $param = [
             'area' => 2,
-            "image1" => 'image2-2.png',
-            'choice1' =>'みつぎ',
-            'choice2' =>'みよし',
-            'choice3' =>'おしらべ',
+            "image1" => 'image2-2.png'
         ];
         DB::table('questions')->insert($param);
         
         $param = [
             'area' => 2,
-            "image1" => 'image2-3.png',
-            'choice1' =>'かなやま',
-            'choice2' =>'きやま',
-            'choice3' =>'ぎんざん',
+            "image1" => 'image2-3.png'
         ];
         DB::table('questions')->insert($param);
 
         $param = [
             'area' => 2,
-            "image1" => 'image2-4.png',
-            'choice1' =>'とよひ',
-            'choice2' =>'としか',
-            'choice3' =>'とよか',
+            "image1" => 'image2-4.png'
         ];
         DB::table('questions')->insert($param);
         
         $param = [
             'area' => 2,
-            "image1" => 'image2-5.png',
-            'choice1' =>'いしぐろ',
-            'choice2' =>'いしあぜ',
-            'choice3' =>'しゃくぜ',
+            "image1" => 'image2-5.png'
         ];
         DB::table('questions')->insert($param);
         
         $param = [
             'area' => 2,
-            "image1" => 'image2-6.png',
-            'choice1' =>'みよし',
-            'choice2' =>'みつぎ',
-            'choice3' =>'みかた',
+            "image1" => 'image2-6.png'
         ];
         DB::table('questions')->insert($param);
         
         $param = [
             'area' => 2,
-            "image1" => 'image2-7.png',
-            'choice1' =>'うずい',
-            'choice2' =>'もみち',
-            'choice3' =>'くもおり',
+            "image1" => 'image2-7.png'
         ];
         DB::table('questions')->insert($param);
         
         $param = [
             'area' => 2,
-            "image1" => 'image2-8.png',
-            'choice1' =>'すもも',
-            'choice2' =>'ぽんかん',
-            'choice3' =>'でこぽん',
+            "image1" => 'image2-8.png'
         ];
         DB::table('questions')->insert($param);
         
         $param = [
             'area' => 2,
-            "image1" => 'image2-9.png',
-            'choice1' =>'おおちごとうげ',
-            'choice2' =>'おおちごえとうげ',
-            'choice3' =>'おうちごとうげ',
+            "image1" => 'image2-9.png'
         ];
         DB::table('questions')->insert($param);
         
         $param = [
             'area' => 2,
-            "image1" => 'image2-10.png',
-            'choice1' =>'よおろほよばら',
-            'choice2' =>'てっぽよばら',
-            'choice3' =>'ていぼよはら',
+            "image1" => 'image2-10.png'
         ];
         DB::table('questions')->insert($param);
     }

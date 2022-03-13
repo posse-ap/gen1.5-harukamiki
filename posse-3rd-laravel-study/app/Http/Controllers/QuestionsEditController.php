@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Choice;
 use App\Question;
 use Illuminate\Http\Request;
 use App\Quizy_area;
@@ -34,7 +35,8 @@ class QuestionsEditController extends Controller
             case 2: return redirect('/?order=byupdate');
             break;
         }
-        return view('admin.index', compact('quizy_areas',));
+
+        return view('admin.index', compact('quizy_areas'));
     }
 
     /**
@@ -67,10 +69,11 @@ class QuestionsEditController extends Controller
      */
     public function show($id)
     {
-        $area_id = $id;
-        $questions = Question::query();
-        $choices= $questions->where('area','like',$id)->get();
-        return view('admin.show', compact('choices', 'area_id'));
+        $area = Quizy_area::find($id);
+
+        $questions = Question::where('area', $id)->get();
+        $choices= Choice::select('question_id','name')->get();
+        return view('admin.show', compact('questions','choices', 'area'));
     }
 
     /**
@@ -112,6 +115,6 @@ class QuestionsEditController extends Controller
     public function destroy($id)
     {
         Quizy_area::where('id', $id)->delete();
-        return redirect('/crud')->with('success', '削除完了しました');
+        return redirect('/')->with('success', '削除完了しました');
     }
 }

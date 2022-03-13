@@ -29,12 +29,17 @@ Route::get('/', function () {
 // quizyのページ
 Route::get('/quiz/{id?}','QuizyController@index')->middleware('auth');
 
-// 質問内容(東京/広島)CRUDページ
+// 質問内容(東京/広島)CRUDページ question
 Route::resource('/crud', 'QuestionsEditController');
 
-//選択肢(高和あtかなわ)CRUDページ
+//選択肢(たかわ /たかなわ)CRUDページ choice
 Route::resource('/choicecrud', 'ChoiceEditController');
 Route::get('/choicecrud/delete', 'ChoiceEditController@destroy')->name('destroy_question');
+// Route::post('/choicecrud/create', 'ChoiceEditController@create')->name('create_choice');
+
+//選択(選択肢tしか)CRUDページ  option
+Route::resource('choicecrud.optioncrud', 'OptionEditController');
+
 
 Auth::routes();
 // TODO 調べる↑

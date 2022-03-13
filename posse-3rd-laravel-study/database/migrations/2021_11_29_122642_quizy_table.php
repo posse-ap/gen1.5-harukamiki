@@ -16,9 +16,6 @@ class QuizyTable extends Migration
         Schema::create('questions', function(Blueprint $table){
             $table->increments('id');
             $table->integer('area');
-            $table->string('choice1');
-            $table->string('choice2');
-            $table->string('choice3');
         });
     }
 

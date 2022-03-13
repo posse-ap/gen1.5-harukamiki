@@ -389,3 +389,110 @@ mbind: Operation not permitted
 2022-03-08T05:55:01.385136-00:00 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
 2022-03-08T05:55:01.735824-00:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
 2022-03-08T05:55:01.736324-00:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2022-03-08T14:28:26.768593-00:00 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.27) starting as process 1
+2022-03-08T14:28:26.801330-00:00 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+2022-03-08T14:28:26.958712-00:00 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-03-08T14:28:41.836782-00:00 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-03-08T14:28:48.904306-00:00 0 [System] [MY-010229] [Server] Starting XA crash recovery...
+2022-03-08T14:28:49.293190-00:00 0 [System] [MY-010232] [Server] XA crash recovery finished.
+2022-03-08T14:28:49.995960-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-03-08T14:28:49.998293-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-03-08T14:28:50.374843-00:00 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-03-08T14:28:50.398781-00:00 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2022-03-08T14:28:50.553967-00:00 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2022-03-08T14:28:51.978842-00:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-03-08T14:28:51.980382-00:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2022-03-09T12:13:36.042380-00:00 0 [System] [MY-013172] [Server] Received SHUTDOWN from user <via user signal>. Shutting down mysqld (Version: 8.0.27).
+2022-03-09T12:13:38.169451-00:00 0 [Warning] [MY-010909] [Server] /usr/sbin/mysqld: Forcing close of thread 33  user: 'laravel'.
+2022-03-09T12:13:40.369980-00:00 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.27)  MySQL Community Server - GPL.
+2022-03-09T15:45:17.851017-00:00 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.27) starting as process 1
+2022-03-09T15:45:17.870208-00:00 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+2022-03-09T15:45:17.934026-00:00 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-03-09T15:45:21.561496-00:00 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-03-09T15:45:23.822417-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-03-09T15:45:23.828491-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-03-09T15:45:23.900164-00:00 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-03-09T15:45:23.901375-00:00 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2022-03-09T15:45:23.927197-00:00 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2022-03-09T15:45:24.270667-00:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-03-09T15:45:24.270772-00:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2022-03-10T08:35:14.314545-00:00 0 [System] [MY-013172] [Server] Received SHUTDOWN from user <via user signal>. Shutting down mysqld (Version: 8.0.27).
+2022-03-10T08:35:16.334475-00:00 0 [Warning] [MY-010909] [Server] /usr/sbin/mysqld: Forcing close of thread 10  user: 'laravel'.
+2022-03-10T08:35:17.457829-00:00 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.27)  MySQL Community Server - GPL.
+2022-03-10T08:40:27.877648-00:00 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.27) starting as process 1
+2022-03-10T08:40:27.893853-00:00 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+2022-03-10T08:40:27.934748-00:00 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-03-10T08:40:30.606174-00:00 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-03-10T08:40:31.415358-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-03-10T08:40:31.416740-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-03-10T08:40:31.434678-00:00 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-03-10T08:40:31.435831-00:00 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2022-03-10T08:40:31.457696-00:00 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2022-03-10T08:40:31.698733-00:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2022-03-10T08:40:31.698904-00:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-03-10T13:58:10.299472-00:00 0 [System] [MY-013172] [Server] Received SHUTDOWN from user <via user signal>. Shutting down mysqld (Version: 8.0.27).
+2022-03-10T13:58:11.620859-00:00 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.27)  MySQL Community Server - GPL.
+2022-03-12T04:26:34.576362-00:00 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.27) starting as process 1
+2022-03-12T04:26:34.657213-00:00 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+2022-03-12T04:26:35.604921-00:00 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-03-12T04:26:51.227720-00:00 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-03-12T04:26:58.020429-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-03-12T04:26:58.027498-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-03-12T04:26:58.125857-00:00 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-03-12T04:26:58.160893-00:00 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2022-03-12T04:26:58.260142-00:00 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2022-03-12T04:26:59.395810-00:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-03-12T04:26:59.396832-00:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2022-03-12T07:39:09.816224-00:00 0 [System] [MY-013172] [Server] Received SHUTDOWN from user <via user signal>. Shutting down mysqld (Version: 8.0.27).
+2022-03-12T07:42:43.930440-00:00 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.27) starting as process 1
+2022-03-12T07:42:43.949371-00:00 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+2022-03-12T07:42:44.087000-00:00 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-03-12T07:42:48.027141-00:00 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-03-12T07:42:48.777765-00:00 0 [System] [MY-010229] [Server] Starting XA crash recovery...
+2022-03-12T07:42:48.805447-00:00 0 [System] [MY-010232] [Server] XA crash recovery finished.
+2022-03-12T07:42:48.934050-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-03-12T07:42:48.935200-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-03-12T07:42:48.952522-00:00 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-03-12T07:42:48.959102-00:00 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2022-03-12T07:42:48.980252-00:00 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2022-03-12T07:42:49.291960-00:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-03-12T07:42:49.292598-00:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2022-03-12T07:43:50.997197-00:00 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.27) starting as process 1
+2022-03-12T07:43:51.051781-00:00 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+2022-03-12T07:43:51.150398-00:00 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-03-12T07:43:55.674891-00:00 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-03-12T07:43:57.746717-00:00 0 [System] [MY-010229] [Server] Starting XA crash recovery...
+2022-03-12T07:43:57.793183-00:00 0 [System] [MY-010232] [Server] XA crash recovery finished.
+2022-03-12T07:43:58.002686-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-03-12T07:43:58.004806-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-03-12T07:43:58.029799-00:00 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-03-12T07:43:58.032041-00:00 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2022-03-12T07:43:58.077214-00:00 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2022-03-12T07:43:58.559480-00:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2022-03-12T07:43:58.559813-00:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-03-12T08:20:57.097351-00:00 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.27) starting as process 1
+2022-03-12T08:20:57.108126-00:00 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+2022-03-12T08:20:57.145404-00:00 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-03-12T08:20:58.877111-00:00 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-03-12T08:20:59.396426-00:00 0 [System] [MY-010229] [Server] Starting XA crash recovery...
+2022-03-12T08:20:59.413478-00:00 0 [System] [MY-010232] [Server] XA crash recovery finished.
+2022-03-12T08:20:59.531487-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-03-12T08:20:59.534094-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-03-12T08:20:59.552100-00:00 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-03-12T08:20:59.552920-00:00 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2022-03-12T08:20:59.565177-00:00 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2022-03-12T08:20:59.716763-00:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-03-12T08:20:59.716987-00:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2022-03-12T11:39:19.270765-00:00 0 [System] [MY-013172] [Server] Received SHUTDOWN from user <via user signal>. Shutting down mysqld (Version: 8.0.27).
+2022-03-12T11:39:20.871511-00:00 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.27)  MySQL Community Server - GPL.
+2022-03-13T03:12:50.893586-00:00 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.27) starting as process 1
+2022-03-13T03:12:50.917017-00:00 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+2022-03-13T03:12:50.979083-00:00 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-03-13T03:12:53.410666-00:00 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-03-13T03:12:54.250768-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-03-13T03:12:54.262645-00:00 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-03-13T03:12:54.295555-00:00 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-03-13T03:12:54.296724-00:00 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2022-03-13T03:12:54.318161-00:00 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2022-03-13T03:12:54.605422-00:00 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-03-13T03:12:54.605585-00:00 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.

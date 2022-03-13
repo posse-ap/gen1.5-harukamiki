@@ -12,11 +12,11 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $param = [
-            'name' => 'mkp',
-            "email" => 'mkp@mkp',
-            'password' =>'password',
-        ];
-        DB::table('users')->insert($param);
+        // $param = [
+        //     'name' => 'mkp',
+        //     "email" => 'mkp@mkp',
+        //     'password' =>'password',
+        // ];
+        // DB::table('users')->insert($param);
     }
 }

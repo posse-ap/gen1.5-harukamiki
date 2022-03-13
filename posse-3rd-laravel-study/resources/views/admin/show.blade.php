@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,37 +8,55 @@
     <link href="../css/style.css" rel="stylesheet">
     <title>Document</title>
 </head>
-<h1>出題リスト画面</h1>
+<h1 class="mt-3">{{ $area->area }}出題リスト画面</h1>
 <button class="btn btn-primary mb-3"><a href="{{ route('crud.index')}}" class="link-light">出題一覧画面</a></button>
  
+<div class="ml-1">
+    <button class="btn btn-primary mb-3">
+        <a href="/choicecrud?area={{$area->id}}&order=backward" class="link-light">逆順</a>
+    </button>
+    <button class="btn btn-primary mb-3">
+        <a href="/choicecrud?area={{$area->id}}&order=byupdate" class="link-light">更新順</a>
+    </button>
+    </div>
+
 <table border="1" class="table table-striped table-hover">
     <tr>
         <th scope="col">質問番号</th>
         <th scope="col">写真</th>
-        <th scope="col">選択肢1</th>
-        <th scope="col">選択肢2</th>
-        <th scope="col">選択肢(正解)</th>
+        <th scope="col">選択肢</th>
     </tr>
-<?php foreach($choices as $index => $choice){ ?>
+<?php 
+// choicesのquestion_idが$indexのものを配列作成
+//  $chosenchoice = $choices;
+
+
+foreach($questions as $index => $question){ ?>
+
     <tr>
         <td>{{ $index+1 }}</td>
         <td>
-            <img src="{{ asset('storage/image/' . $choice->image1)}}">
+            <img width="70px" src="{{ asset('storage/image/' . $question->image1)}}">
         </td>
-        <td>{{ $choice->choice1 }}</td>
-        <td>{{ $choice->choice2 }}</td>
-        <td>{{ $choice->choice3 }}</td>
+        <?php 
+        foreach($choices as $choice){ 
+            if($choice->question_id == $question->id){
+        ?>
+        <td>{{ $choice->name }}</td>
+        <?php   
+        } };?>
         <td>
             <form action="{{ route('destroy_question')}}" method="POST">
                 @csrf
                 @method('DELETE')
-                <input type="hidden" name="id" value="{{ $choice->id }}"  class="">
+                <input type="hidden" name="id" value="{{ $question->id }}"  class="">
                 <input type="submit" name="" value="削除"  class="btn btn-default border btn-outline-secondary">
             </form>
-            <th><a href="{{ route('choicecrud.edit',[$choice->id])}}"  class="btn btn-default border btn-outline-secondary">編集</a></th>
+            <th><a href="{{ route('choicecrud.optioncrud.index', $question->id)}}"  class="btn btn-default border btn-outline-secondary">編集</a></th>
         </td>
     </tr>
-<?php }; ?>
+<?php 
+}; ?>
 </table>
 
 <div class="mt-3 ml-3 border">
@@ -46,7 +64,7 @@
 <form action="{{ route('choicecrud.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form_group mb-3">
-        <input type="hidden" name="area" value="{{$choice->area}}">
+        {{-- <input type="hidden" name="area" value="{{$questions[0]->id}}"> --}}
     </div>
     
     <div class="form_group mb-3">

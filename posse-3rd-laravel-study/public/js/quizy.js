@@ -49,7 +49,7 @@ let contentsBox = document.getElementById('contents');
 // };
 
 
-// ↓↓クリックしても正解！らへんが出ない
+// ↓↓0が正解になったままです
 var onclickFunction = function (question, clicked) {
     let clickedOption = document.getElementById('choice' + question + '-' + clicked);
     let answerOption = document.getElementById('choice' + question + '-0');
@@ -57,7 +57,7 @@ var onclickFunction = function (question, clicked) {
     let answerTitle = document.getElementById('answerTitle' + question);
    
     for (let t=0; t<3; t++){
-    document.getElementById('choice' + question + `-${t}`).style.pointerEvents ="none"; 
+    document.getElementById('choice' + question + '-' + [t] ) .style.pointerEvents ="none"; 
 }
     
     document.getElementById('answerExplanation'+ question).style.display = 'block';
