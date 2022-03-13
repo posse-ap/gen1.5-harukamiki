@@ -1,0 +1,114 @@
+@charset "utf-8";
+
+html{
+  box-sizing: border-box;
+  width: 100vw;
+}
+
+body{
+  max-width: 800px;
+  margin:0 auto;
+  padding:0;
+  border:0;
+}
+
+.question{
+  box-sizing: border-box;
+  margin: 30px 15px;
+}
+
+img{
+  display: inline-block;
+  width:70px;
+  margin: 0;
+}
+
+.small_image{
+  width:70px;
+}
+h1{
+  width: 100%;
+  font-size: 19px;
+  font-weight:700;
+}
+
+h2{
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 600;
+
+}
+
+h2::after{
+  display: block;
+  content:'';
+  width:120px;
+  height: 2px;
+  background-color: #00ab36;
+}
+
+ul{
+  width: 100%;
+  margin:0;
+  padding:0;
+}
+
+li{
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 3px;;
+  list-style: none;
+  font-weight: 600;
+  border: 1px solid #ebebeb;
+  padding:13px;
+  margin:10px 0;
+  cursor: pointer;
+  
+}
+
+/* ///答えが出てくる箱 */
+.answerBox{
+  background-color: #f5f5f5;
+  padding: 17px;
+  border-radius: 3px;
+  display: none;
+}
+
+.answerTitle{
+  margin:0 0 10px 0;
+  padding: 0 0 3px 0;
+  border: 0 0 3px 0;
+  display:none;
+}
+
+.rightAnswer{
+  background-color: #287DFF;
+  color: white;
+}
+
+.wrongAnswer{
+  background-color: #FF5128;
+  color: white;
+}
+
+#answerExplanation{
+  margin:0;
+}
+
+/* 追加css */
+
+.cantclick{
+  pointer-events: none;
+}
+
+.rightUnderbar{
+  display: inline-block;
+  margin:0;
+  padding:0;
+  background: linear-gradient(transparent 90%, #287DFF 20%);
+}
+
+.wrongUnderbar{
+  display: inline-block;
+  background: linear-gradient(transparent 90%, #FF5128 20%);
+}
