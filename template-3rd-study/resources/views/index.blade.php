@@ -1,18 +1,8 @@
-<?php
-require('requiresql.php');
-
-$stmt = $pdo->prepare('SELECT studied_on FROM studydata GROUP BY studied_on');
-$stmt->execute();
-$timelength = $stmt->fetchAll();
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
-    <link rel="stylesheet" href="posse-app.css">
+    <link rel="stylesheet" href="css/posse-app.css">
     <script src="https://kit.fontawesome.com/deee3ad54f.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,40 +22,17 @@ $timelength = $stmt->fetchAll();
             <div class="hourBigBox">
                 <div class="hourBox">
                     <span class="hourBoxTitle">Today</span>
-                    <span class="todayNo">
-                    <?php     
-                        $today = date("Y-m-d");  
-                        $sth = $pdo->prepare('SELECT sum(timelength) as today_total FROM studydata WHERE studied_on = :today');
-                        $sth -> bindValue(':today', $today);
-                        $sth->execute();
-                        $todaystudytime = $sth->fetchAll();
-                        echo $todaystudytime['today_total'] ?? 0;
-                        ?>
-                    </span>
+                    <span class="todayNo">{{ $study_time_today }}</span>
                     <span class="hour">hour</span>
                 </div>
                 <div class="hourBox">
                     <span class="hourBoxTitle">Month</span>
-                    <span class="monthNo">
-                        <?php
-                        $stmt = $pdo->prepare("SELECT SUM(timelength) as month_total FROM studydata WHERE DATE_FORMAT(studied_on, '%Y%m') = DATE_FORMAT(now(), '%y%m');");
-                        $stmt->execute();
-                        $monthstudytime =$stmt->fetchAll();
-                        echo $monthstudytime['month_total'] ?? 0;
-                        ?>
-                    </span>
+                    <span class="monthNo">{{ $study_time_month }}</span>
                     <span class="hour">hour</span>
                 </div>
                 <div class="hourBox">
                     <span class="hourBoxTitle">Total</span>
-                    <span class="totalNo">
-                        <?php        
-                        $stmt = $pdo->prepare('SELECT sum(timelength) as total FROM studydata');
-                        $stmt->execute();
-                        $totalstudytime= $stmt->fetch();
-                        echo $totalstudytime["total"];
-                        ?>
-                    </span>
+                    <span class="totalNo">{{ $study_time_total }}</span>
                     <span class="hour">hour</span>
                 </div>
             </div>
@@ -81,14 +48,11 @@ $timelength = $stmt->fetchAll();
                 <!-- <img src="gengoguraff.png" alt="piechart.language" class="langPiechart"> -->
                 <canvas id="langPiechart" class="langPiechart" width="100" height="100"></canvas>
                 <?php 
-                    $stmt = $pdo->prepare('SELECT * FROM languages');
-                    $stmt->execute();
-                    $languagelabels = $stmt->fetchAll();
-                    foreach($languagelabels as $languagelabel):
+                   foreach($language_list as $language):
                 ?>
                 <li>
-                    <p class="<?= $languagelabel['language'] ?>" style="background: #<?= $languagelabel['lang_color']?>;"></p>
-                    <?= $languagelabel['language'] ?>
+                    <p class="{{  $language->language }}" style="background: #{{  $language->language_color }};"></p>
+                    {{  $language->language }}
                 </li>
                 <?php endforeach; ?>
 
@@ -99,14 +63,11 @@ $timelength = $stmt->fetchAll();
                 <!-- <img src="conteguraff.png" alt="piechart.contents" class="contPiechart"> -->
                 <canvas id="contPiechart" class="contPiechart"></canvas>
                 <?php 
-                    $stmt = $pdo->prepare('SELECT * FROM contents');
-                    $stmt->execute();
-                    $contentlabels = $stmt->fetchAll();
-                    foreach($contentlabels as $contentlabel):
+                    foreach($contents_list as $content):
                 ?>
                 <li>
-                    <p class="<?= $contentlabel['content'] ?>" style="background: #<?= $contentlabel['content_color']?>;"></p>
-                    <?= $contentlabel['content'] ?>
+                    <p class="{{ $content->content }}>" style="background: #{{ $content->content_color }};"></p>
+                    {{ $content->content }}
                 </li>
                 <?php endforeach; ?>
             </div>
@@ -131,20 +92,20 @@ $timelength = $stmt->fetchAll();
                         readonly="readonly">
                     <h3>学習コンテンツ(複数選択可)</h3>
                     <ul>
-                    <?php
-                        foreach($contentlabels as $contentlabel):
+                    <?php 
+                        foreach($contents_list as $content):
                     ?>
-                        <label class="modal-checkbox"><input class="modal-checkboxInput" type="checkbox"><?= $contentlabel['content'] ?></label>
+                        <label class="modal-checkbox"><input class="modal-checkboxInput" type="checkbox">{{ $content->content }}</label>
                     <?php endforeach; ?>
 
                     </ul>
                     <h3>学習言語(複数選択可)</h3>
                     <ul>
-                        <?php
-                        foreach($languagelabels as $languagelabel):
+                        <?php 
+                        foreach($language_list as $language):
                         ?>
-                        <label for="<?= $languagelabel['language'] ?>" class="modal-checkbox"><input name="<?= $languagelabel['language'] ?>" class="modal-checkboxInput"
-                                type="checkbox"><?= $languagelabel['language'] ?></label>
+                        <label for="{{  $language->language }}>" class="modal-checkbox"><input name="{{  $language->language }}" class="modal-checkboxInput"
+                                type="checkbox">{{  $language->language }}</label>
 
                         <?php endforeach; ?>
                     </ul>
