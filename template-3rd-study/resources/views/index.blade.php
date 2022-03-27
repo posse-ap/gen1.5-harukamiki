@@ -39,14 +39,187 @@
             <div class="bar"></div>
             <div class="bargraph">
                 <canvas id="myChart" class="bargraphItself"></canvas>
-            </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+                {{-- グラフを描写 --}}
+                <script>                   
+                    //ラベル
+                    var labels = [
+                        <?php
+                        $datelabels = range(1,date('t'));
+                        foreach($datelabels as $key => $bargraphlabels)
+                        if ($bargraphlabels !== end($datelabels)) {
+                            echo '\'' . $bargraphlabels . '\''. ',' . PHP_EOL;
+                        }else{
+                            echo '\'' . $bargraphlabels . '\'' . PHP_EOL;
+                        }
+                        ?>
+                	];
+        	        //実査の勉強のデータ
+        	        var study_data = [
+                        <?php
+                        foreach($study_length_per_day as $study_length){
+                                echo $study_length , ',' . PHP_EOL;
+                        }
+                         ?>
+                	];
+                                
+                var ctx = document.getElementById("myChart");
+                var myChart = new Chart(ctx, {
+        		type: 'line',
+                // TODO：barにすると何も表示されない
+        		data : {
+        			labels: labels,
+        			datasets: [
+        				{
+        					label: '勉強時間',
+        					data: study_data,
+        					borderColor: "rgb(72,138,199)",
+                			backgroundColor: "rgba(0,0,0,0)"
+        				},
+        			]
+        		},
+        		options: {
+        			title: {
+        				display: false,
+        			},
+                    // legend: {
+                    //     display: false
+                    // },
+                    
+                    // xAxes: [{
+                    //     gridLines: {
+                    //         display: false
+                    //     },
+                    //     ticks: {
+                    //         min: 1,
+                    //         max: 30,
+                    //         stepSize: 2,
+                    //         maxTicksLimit: 16,
+                    //     }
+                    //     }],
+                    // yAxes: [{
+                    //     gridLines: {
+                    //         display: false
+                    //     },
+                    //     ticks: {
+                    //         suggestedMax: 8,
+                    //         suggestedMin: 0,
+                    //         stepSize: 2,
+                    //         callback: function (value, index, values) {
+                    //         return value + 'h'
+                    //         }
+                    //     }
+                    // }]
+                }
+            });
+            </script>
+            {{-- // グラフ描写ここまで --}}
         </div>
+    </div>
 
         <div class="piechartBigBox">
             <div class="languageBigBox">
                 <div class="piechartTitle">学習言語</div>
-                <!-- <img src="gengoguraff.png" alt="piechart.language" class="langPiechart"> -->
+                {{-- グラフを描写 --}}
+                <script>                   
+                    // ラベル
+                        var labels = [
+                            <?php
+                            $datelabels = range(1,date('t'));
+                            foreach($datelabels as $key => $bargraphlabels){
+                            if ($bargraphlabels !== end($datelabels)) {
+                                echo '\'' . $bargraphlabels . '\''. ',' . PHP_EOL;
+                            }else{
+                                echo '\'' . $bargraphlabels . '\'' . PHP_EOL;
+                            }
+                            }
+                            ?>
+                    	];
+
+        	        //実査の勉強のデータ
+        	            var study_data = [
+                            <?php
+                            foreach($study_length_per_day as $study_length){
+                                    echo $study_length , ',' . PHP_EOL;
+                            }
+                             ?>
+                    	];
+
+                        var ctx = document.getElementById("myChart");
+                        var myChart = new Chart(ctx, {
+        		        type: 'line',
+        		        data : {
+        		    	    labels: labels,
+        		    	    datasets: [
+        		    	    	{
+        		    		    	label: '勉強時間',
+        		    		    	data: study_data,
+        		    		    	borderColor: "rgb(72,138,199)",
+                    		    	backgroundColor: "rgba(0,0,0,0)"
+        		    	    	},
+        		        	]
+        		        },
+                        });
+                </script>
+
+                
                 <canvas id="langPiechart" class="langPiechart" width="100" height="100"></canvas>
+                <script>
+                
+                    var labels = [
+                        <?php 
+                            foreach($language_list as $language){
+                                if ($language !== end($language_list)) {
+                                    echo '\'' . $language->language . '\''. "," . PHP_EOL;
+                                }else{
+                                    echo '\'' . $language->language . '\'' . PHP_EOL;
+                                }
+                            }
+                        ?>
+                     ];
+
+                    var backgroundcolor = [
+                        <?php 
+                              foreach($language_list as $language){
+                                if ($language !== end($language_list)) {
+                                    echo '\'#' . $language->language_color . '\''. "," . PHP_EOL;
+                                }else{
+                                    echo '\'#' . $language->language_color . '\'' . PHP_EOL;
+                                }
+                              }
+                        ?>
+                    ]
+
+                    var study_data = [
+                        <?php
+                            foreach($study_time_by_language as $lang_total){
+                                if ($lang_total !== end($study_time_by_language)) {
+                                    echo '\'' . $lang_total->lang_total . '\''. "," . PHP_EOL;
+                                }else{
+                                    echo '\'' . $lang_total->lang_total . '\'' . PHP_EOL;
+                                }
+                              }
+                        ?>
+                    ]
+                    
+                    var ctx = document.getElementById("langPiechart");
+                        var langPiechart = new Chart(ctx, {
+        		        type: 'doughnut',
+        		        data : {
+        		    	    // labels: labels,
+        		    	    datasets: [
+        		    	    	{
+        		    		    	data: study_data,
+        		    		    	// borderColor: "rgb(72,138,199)",
+                    		    	backgroundColor: backgroundcolor,
+        		    	    	},
+        		        	]
+        		        },
+                        cutoutPercentage: 40,
+                        });
+                </script>
+
+
                 <?php 
                    foreach($language_list as $language):
                 ?>
@@ -55,13 +228,54 @@
                     {{  $language->language }}
                 </li>
                 <?php endforeach; ?>
-
             </div>
 
             <div class="contentsBigBox">
                 <div class="piechartTitle">学習コンテンツ</div>
-                <!-- <img src="conteguraff.png" alt="piechart.contents" class="contPiechart"> -->
-                <canvas id="contPiechart" class="contPiechart"></canvas>
+                <canvas id="contPiechart" class="langPiechart" width="100" height="100"></canvas>
+                <script>
+
+                var backgroundcolor = [
+                    <?php 
+                          foreach($contents_list as $content){
+                            if ($content !== end($contents_list)) {
+                                echo '\'#' . $content->content_color . '\''. "," . PHP_EOL;
+                            }else{
+                                echo '\'#' . $content->content_color . '\'' . PHP_EOL;
+                            }
+                          }
+                    ?>
+                ]
+
+                var study_data = [ 
+                    <?php
+                        foreach($study_time_by_content as $content_total){
+                            if ($content_total !== end($study_time_by_content)) {
+                                echo '\'' . $content_total->content_total . '\''. "," . PHP_EOL;
+                            }else{
+                                echo '\'' . $content_total->content_total . '\'' . PHP_EOL;
+                            }
+                          }
+                    ?>
+                ]
+                
+                var ctx = document.getElementById("contPiechart");
+                    var contPiechart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data : {
+                        // labels: labels,
+                        datasets: [
+                            {
+                                data: study_data,
+                                // borderColor: "rgb(72,138,199)",
+                                backgroundColor: backgroundcolor,
+                            },
+                        ]
+                    },
+                    cutoutPercentage: 40,
+                    });
+            </script>
+
                 <?php 
                     foreach($contents_list as $content):
                 ?>
@@ -200,10 +414,10 @@
         </div>
     </section>
 
-    <script src="posse-app.js"></script>
+    <script src="{{ asset('/js/posse-app.js') }}"></script>
+    <script src="{{ asset('/js/chart.php') }}" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
-    <script src="chart.php" type="text/javascript"></script>
-    <script src="chartjs-plugin-labels.js"></script>
+    <script src="{{ asset('js/chartjs-plugin-labels.js') }}"></script>
 </body>
 
 </html>
