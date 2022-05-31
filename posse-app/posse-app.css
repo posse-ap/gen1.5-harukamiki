@@ -1,0 +1,750 @@
+html{
+    min-width: 375px;
+    /* max-width:1440px; */
+    width:100%;
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    display: block;
+    box-sizing: border-box;
+    height: 100%;
+    margin:0;
+}
+
+.header{
+    box-sizing: 100%;
+    padding: 5px 20px;
+}
+
+.weekNo{
+    color: #98B9D2;
+}
+
+.topbutton{
+    float:right;
+    outline:none;
+    display: block;
+    cursor: pointer;
+    border-radius: 100vh;
+    background: linear-gradient(0.25turn, #1073BC, #3BCDFD);
+    color: white;
+    padding:5px 40px;
+    font-size: 15px;
+    border:0;
+    box-shadow: 0 5px 10px 5px #3bccfd6b;
+}
+
+.bottombutton{
+    display: none;
+}
+
+.main{
+    background-color:#F5F5F8;
+    height: 80vh;
+    padding:20px 50px; 
+    margin:0;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.footer{
+    width: 100%;
+    text-align: center;
+}
+
+.bargraphBigBox{
+    display: block;
+    width: 50%;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+/* 記録・投稿のボタン */
+.topbutton{
+    margin: 0 0 0 auto;
+}
+
+/* today/month/totalの箱が入った外枠の箱 */
+.hourBigBox{
+    display: flex;
+    min-width: 50%;
+}
+
+/* today/month/totalの３つの箱全部 */
+.hourBox{
+    background-color: #ffffff;
+    display: inline-block;
+    margin: 10px auto 30px auto;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 20%;
+    box-shadow: 0 10px 10px 0 rgba(211, 211, 211, 0.243);
+
+}
+
+/* today/month/totalの文字 */
+.hourBoxTitle{
+    display:block;
+    color: #4387C6;
+    font-weight: bold;
+    font-size:medium;
+    text-align: center;
+}
+
+/* todayのところの数 */
+.todayNo{
+    display:block;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* monthのところの数 */
+.monthNo{
+    display:block;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    }
+
+/* totalのところの数 */
+.totalNo{
+    display:block;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    }
+
+/* hourのもじ3つ全部 */
+.hour{
+    color: #AAC5D9;
+    display:block;
+    text-align: center;
+}
+
+.bar{
+    display: none;
+}
+/* 棒グラフ写真 の外側の箱*/
+.bargraph{
+    display:flex;
+    height:50%;
+    border-radius: 10px;
+    margin: 0 10px;
+    }
+
+/* 棒グラフ自体 */
+.bargraphitself{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 0 rgba(211, 211, 211, 0.243);
+}
+                 
+
+                                 /* piechart 側 */
+
+ /* 学習言語・学習コンテンツが入ってる大枠の箱 */
+.piechartBigBox{
+    display: flex;
+    width: 50%;
+}
+
+/* 学習言語の箱全体 */
+.languageBigBox{
+    background-color: white;
+    box-sizing: border-box;
+    margin: 10px 0 10px 20px;
+    /* border: 10px auto; */
+    padding: 10px;
+    border-radius: 10px;
+    display: block;
+    /* max-width: 300px; */
+    width: 50%;
+    box-shadow: 0 10px 10px 0 rgba(211, 211, 211, 0.243);
+}
+/* 学習言語piechart */
+.langPiechart{
+    display: block;
+    margin:10px auto;
+    width:100%;
+    max-width: 250px;
+}
+/*  学習コンテンツpiechart*/
+.contPiechart{
+    display: block;
+    margin:10px auto;
+    width:100%;
+    max-width: 250px;
+}
+
+/* 学習コンテンツの箱全体 */
+.contentsBigBox{
+    background-color: white;
+    box-sizing: border-box;
+    margin: 10px 0 10px 20px;
+    padding: 10px;
+    border-radius: 10px;
+    display: block;
+    /* max-width: 300px; */
+    width: 50%;
+    box-shadow: 0 10px 10px 0 rgba(211, 211, 211, 0.243);
+}
+
+/* 学習言語・学習コンテンツのもじ */
+.piechartTitle{
+    color: #121212;
+    font-weight: bold;
+    font-size:medium;
+    padding-top: 2vh;
+}
+
+/* ページの一番下のカレンダー */
+.bottomCalendar{
+    display: inline-block;
+    position: relative;
+    padding: 0 16px;
+    color: #000;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+
+/* モーダル */
+.modalOutside{
+    display:none;
+    position: absolute;
+    left: 0; 
+    top: 0;
+    /* display: table-cell; */
+    /* vertical-align: middle; */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30,30,30,0.9);
+    padding-top:20vh;
+    z-index: 2147483646;
+}
+
+.modal{
+    position: absolute;
+    /* display: inline-block; */
+    box-sizing: border-box;
+    width: 60%;
+    border-radius: 30px;
+    min-width: 375px;
+    margin-left: 20%;
+    height: fit-content;
+	/* margin-top:30%; */
+    text-align: left;
+	padding:10px 20px;
+	border:0;
+	background:#ffffff;
+    z-index: 2147483647;
+}
+
+.modalInside{
+    display: flex;
+}
+
+#modal h3{
+    font-size: 10px;
+    display: block;
+}
+
+/* input[type=checkbox] {
+    display: none;
+}
+
+.modal-checkboxInput{
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 30px;
+    position: relative;
+    width: auto;
+}
+
+.modal-checkboxInput::before{
+    background: #fff;
+    border: 1px solid #231815;
+    content: '';
+    display: block;
+    height: 16px;
+    left: 5px;
+    margin-top: -8px;
+    position: absolute;
+    top: 50%;
+    width: 16px;
+} */
+
+/* モーダル内左半分 */
+.modal-lefthalf{
+    display: block;
+    width: 50%;
+    margin-right: 5%;
+}
+
+.modal-checkbox{
+    display: inline-block;
+    border-radius: 10px;
+    background: #F5F5F8;
+    padding: 4px 5px;
+    margin: 1px;
+}
+
+#modal ul{
+    display: block;
+    padding:0;
+}
+.modal-input,.modal-calendar, .modal-inputTWT{
+    display: block;
+    width: 90%;
+    background-color: #F5F5F8;
+    border:none;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.modal-inputTWT{
+    height: 50%;
+    resize: none;
+}
+
+/* モーダル内右半分 */
+.modal-righthalf{
+    display: block;
+    width: 50%;
+}
+.fa-check-circle::before {
+   color: rgb(15,113,189);
+   font-size: 1.5em;
+   margin-top: 3px;
+}
+
+.fa-check-circle{
+    font-weight: 100;
+    font-size: 10px;
+    height: fit-content;
+    padding-bottom: 5px;
+}
+/* モーダル内×ボタン */
+#closeModal{
+    cursor: pointer;
+    display: block;
+}
+/* モーダル内投稿ボタン */
+.modalbutton, .calendarSubmitButton{
+    outline:none;
+    display: block;
+    cursor: pointer;
+    border-radius: 100vh;
+    background: linear-gradient(0.25turn, #1073BC, #3BCDFD);
+    color: white;
+    padding:10px 40%;
+    font-size: 18px;
+    border:0;
+    margin: 0 auto;
+    box-shadow: 0 5px 10px 5px #3bccfd6b;
+}
+
+/* モーダル投稿しました */
+.postComplete{
+    display: none;
+    box-sizing: border-box;
+    width: 100%;
+   text-align: center;
+   padding:10%;
+}
+
+.postComplete .awe{
+    color: rgb(190,227,97);
+}
+
+.size{
+    font-size: 3em;
+    font-weight: 800;
+}
+.size::before{
+    color: #BEE361;
+}
+
+/* カレンダーモーダル */
+.modalCalendar{
+    width: 100%;
+    display: inline-block;
+}
+
+.calendar{
+    width: 70%;
+    margin:auto;
+    height:40vh;
+}
+
+.CalendarModalTitle{
+    position: relative;
+    display: block;
+    text-align: center;
+    padding: 0 16px;
+    color: #000;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.calendar th{
+    color: #AFCCE3;
+    width:calc(100% / 7);
+    text-align: center;
+}
+
+.calendar td{
+    color: #ABABAB;
+    font-weight: 1000;
+    border-radius: 2em;
+    text-align: center;
+}
+
+.arrow{
+    padding:10px;
+    border-radius: 1em;
+}
+.arrow:hover, .calendar td:hover{
+    background-color:rgba(154, 154, 154, 0.243);
+}
+
+
+
+.calendarSubmitButton{
+    display: block;
+    padding: 8px 10%;
+    margin: 30px auto;
+}
+
+.bottomCalendar{
+    display:inline-block;
+}
+
+.calendarback, .calendarforward{
+    display: inline-block;
+    color: #1C75BD;
+}
+/* ローディング */
+#loading{
+    display: none;
+    width:100%;
+    height:100%;
+    margin:0;
+    text-align: center;
+}
+
+.loader {
+    font-size: 10px;
+    margin: 20% auto;
+    text-indent: -9999em;
+    width:11em;
+    height: 11em;
+    border-radius: 50%;
+    background: linear-gradient(#35C0F5, #1278C1);
+    background: -moz-linear-gradient(left, pink 10%, rgba(255, 255, 255, 0) 42%);
+    background: -webkit-linear-gradient(left, white);
+    background: -o-linear-gradient(left, green 10%, rgba(255, 255, 255, 0) 42%);
+    background: -ms-linear-gradient(left, blue 10%, rgba(255, 255, 255, 0) 42%);
+
+    position: relative;
+    -webkit-animation: load3 1.4s infinite linear;
+    animation: load3 1.4s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  .loader:before {
+    width: 50%;
+    height: 50%;
+    background:white;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+  }
+  .loader:after {
+    background:white;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  @-webkit-keyframes load3 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes load3 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+
+
+/* 画面幅が750px以下の時 */
+@media screen and (max-width:750px){
+    html{
+        min-width: 375px;
+        margin-left:auto;
+        margin-right:auto;
+        width:100vw;
+        height:100vh;
+    } 
+
+    .body{
+        min-width: 400px;
+        width: 100vw;
+        height:100vh;
+        margin-right:auto;
+        margin-left:auto;
+    }
+
+    .topbutton{
+        display: none;
+    }
+
+    .bottombutton{
+        display: block;
+        outline:none;
+        cursor: pointer;
+        border-radius: 100vh;
+        box-sizing: border-box;
+        width: 80%;
+        background: linear-gradient(0.25turn, #1073BC, #3BCDFD);
+        color: white;
+        padding:5px 100px;
+        margin:2% 10% 10% 10%;
+        font-size: medium;
+        border:0;
+        box-shadow: 0 5px 10px 5px #3bccfd6b;
+        }
+
+    .header{
+        padding: 2%;
+    }
+
+    .main{
+        display: block;
+        width:100vw;
+        height: auto;
+        margin-right:auto;
+        padding:0;
+    }
+
+    .bargraphBigBox{
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .bargraphPhoto{
+        height: 150px;
+    }
+
+    .hourBigBox{
+        width: 100%;
+    }
+
+    .hourBox{
+        margin:5% auto 2% auto;
+        padding: 3% 4%;
+    }
+    .hourBoxTitle{
+        font-size: large;
+    }
+    .monthNo, .totalNo, .todayNo{
+        font-size: larger;
+        
+    }
+    .hour{
+        font-size: large;
+    }
+
+    .bar{
+        display: block;
+        width: 90%;
+        margin: 5%;
+        height: 3px;
+        background: #DEE8ED;
+    }
+
+    .bargraph{
+        width:90%;
+        margin:5%;
+    }
+    
+    .piechartBigBox{
+        width: 90%;
+        margin:5% 5% 0 5%;
+        height: fit-content;
+    }
+    .contPiechart,.langPiechart{
+       padding: 0;
+       box-sizing: border-box;
+       max-width: none;
+    }
+    
+    .piechartTitle{
+        font-size: smaller;
+        padding: 3%;
+    }
+
+    .contentsBigBox{
+        margin:0 0 10px 10px;
+    }
+    .languageBigBox{
+        margin: 0 10px 10px 0;
+    }
+
+    .contentsBigBox li, .languageBigBox li{
+        font-size: smaller;
+        color: #8A8A8A;
+        margin: 1px 0 0 0;
+    }
+
+    .contentsBigBox li::before, .languageBigBox li::before{
+        margin: 3px;
+    }
+    .bottomCalendar{
+        font-size: small;
+        font-weight: 800;
+       margin: 0 20%;
+    }
+    
+    .footer{
+        width: 100%;
+        height: fit-content;
+        margin:0;
+        padding:0 0 5px 0;
+        background:#F5F5F8;
+    }
+
+    .modalOutside{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+
+    .modal{
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        margin: 20% 0 0 0;
+        font-size: larger;
+    }
+
+    .modalInside{
+        display:block;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        padding:0 3%;
+    }
+    #modal h3{
+        font-size: small;
+    }
+
+    #modal ul{
+        padding: 0;
+        display: inline-block;
+        font-size: small;
+    }
+
+    .modal-input, .modal-calendar{
+        display: block;
+        /* height: 6%; */
+        margin:0;
+        padding: auto;
+        width: 100%;
+    }
+    .modal-inputTWT{
+        width: 100%;
+        height: 50px;
+    }
+
+    .calendar{
+        margin: 10% auto;
+    }
+
+    .modalInside{
+        height: 70%;
+    }
+    .modal-lefthalf,.modal-righthalf{
+        width: 100%;
+    }
+    .modalbutton{
+        margin: 15% auto;
+        padding: 10px 35%;
+        font-size: medium;
+
+    }
+    .fa-check-circle{
+        font-size: small;
+        padding: 10px 0;
+    }
+    .twt{ 
+        font-weight: 700;
+    }
+    .size{
+        font-size: 3em;
+    }
+    .postComplete{
+        padding: 60% 10%;
+    }
+    .loader{
+        margin: 60% auto;
+    }
+
+}
+
+
+
+.Javascript, .CSS , .PHP, .HTML, .Laravel, .SQL, .SHELL, .jyohou, .dotinstall, .nyobi, .posseassignment{
+    margin:0;
+    padding:0;
+    font-size: medium;
+    list-style: none;
+} 
+
+.languageBigBox li, .contentsBigBox li{
+    list-style: none;
+    display: inline-block;
+    margin:0;
+}
+
+.languageBigBox li p, .contentsBigBox li p{
+    display:inline-block; 
+    vertical-align: middle;
+    content:'';
+    margin: 3pt;
+    width:1em;
+    height: 1em;
+    border-radius: 50%;
+    list-style: none;
+}
