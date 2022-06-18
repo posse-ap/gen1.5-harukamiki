@@ -1,162 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <title>My Todo List</title>
 </head>
-<body class="h-screen pb-7">
-<header class="flex h-20 bg-white">
-  <div class="h-full"><img class="h-full" src="image/posse_logo.png" alt="posse_logo"></div>
-  <div class="w-5/6 text-right my-auto">
-    <button class="bg-blue-400 px-5 py-2 text-white rounded-3xl mr-5 bg-gradient-to-r from-blue-500 to-cyan-500">管理画面へ</button>
-    <button class="text-gray-400 mr-10">ログアウト</button>
-  </div>
-</header>
-<main class="bg-gray-100">
-  <h1 class="py-5 mx-5 text-lg">ようこそ〇〇さん</h1>
-  <section class="w-4/5 ml-auto mr-auto">
-    <div class="flex">
-      <button class="bg-white rounded-md px-2 py-2 ml-2 font-bold drop-shadow-md text-lg">全て</button>
-      <button class="bg-white rounded-md px-2 py-2 ml-2 font-bold drop-shadow-md text-lg">参加</button>
-      <button class="bg-white rounded-md px-2 py-2 ml-2 font-bold drop-shadow-md text-lg">不参加</button>
-      <button class="bg-white rounded-md px-2 py-2 ml-2 font-bold drop-shadow-md text-lg">提出済み</button>
-      <button class="bg-blue-800 text-white rounded-md px-2 py-2 ml-2 font-bold drop-shadow-md text-lg">未回答</button>
-    </div>
-    <h2 class="mt-7 mb-3 font-bold">一覧</h2>
-    <section>
-    <div class="flex justify-between drop-shadow-md bg-white rounded-md py-5 px-3 mb-5">
-      <div class="">
-        <h3 class="font-bold text-xl">POSSE①かだサポ</h3>
-        <p>2022年06月12日（日）</p>
-        <p class="text-sm">10:00 ~ 12:00</p>
-      </div>
-      <div class="text-right">
-        <div class="text-center">
-          <p class="text-orange-300 font-bold">未回答</p>
-          <p class="text-orange-300 font-bold">期限 06月12日12時</p>
-        </div>
-        <div class="flex text-right">
-          <p class="text-xl text-rght">15</p>
-          <p>人参加 ></p>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-between drop-shadow-md bg-white rounded-md py-5 px-3 mb-5">
-      <div class="">
-        <h3 class="font-bold text-xl">POSSE①かだサポ</h3>
-        <p>2022年06月12日（日）</p>
-        <p class="text-sm">10:00 ~ 12:00</p>
-      </div>
-      <div class="text-right">
-        <div class="text-center">
-          <p class="text-orange-300 font-bold">未回答</p>
-          <p class="text-orange-300 font-bold">期限 06月12日12時</p>
-        </div>
-        <div class="flex text-right">
-          <p class="text-xl text-rght">15</p>
-          <p>人参加 ></p>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-between drop-shadow-md bg-white rounded-md py-5 px-3 mb-5">
-      <div class="">
-        <h3 class="font-bold text-xl">POSSE①かだサポ</h3>
-        <p>2022年06月12日（日）</p>
-        <p class="text-sm">10:00 ~ 12:00</p>
-      </div>
-      <div class="text-right">
-        <div class="text-center">
-          <p class="text-orange-300 font-bold">未回答</p>
-          <p class="text-orange-300 font-bold">期限 06月12日12時</p>
-        </div>
-        <div class="flex text-right">
-          <p class="text-xl text-rght">15</p>
-          <p>人参加 ></p>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-between drop-shadow-md bg-white rounded-md py-5 px-3 mb-5">
-      <div class="">
-        <h3 class="font-bold text-xl">POSSE①かだサポ</h3>
-        <p>2022年06月12日（日）</p>
-        <p class="text-sm">10:00 ~ 12:00</p>
-      </div>
-      <div class="text-right">
-        <div class="text-center">
-          <p class="text-orange-300 font-bold">未回答</p>
-          <p class="text-orange-300 font-bold">期限 06月12日12時</p>
-        </div>
-        <div class="flex text-right">
-          <p class="text-xl text-rght">15</p>
-          <p>人参加 ></p>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-between drop-shadow-md bg-white rounded-md py-5 px-3 mb-5">
-      <div class="">
-        <h3 class="font-bold text-xl">POSSE①かだサポ</h3>
-        <p>2022年06月12日（日）</p>
-        <p class="text-sm">10:00 ~ 12:00</p>
-      </div>
-      <div class="text-right">
-        <div class="text-center">
-          <p class="text-orange-300 font-bold">未回答</p>
-          <p class="text-orange-300 font-bold">期限 06月12日12時</p>
-        </div>
-        <div class="flex text-right">
-          <p class="text-xl text-rght">15</p>
-          <p>人参加 ></p>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-between drop-shadow-md bg-white rounded-md pt-5 pb-5 px-3 mb-5">
-      <div class="">
-        <h3 class="font-bold text-xl">POSSE①かだサポ</h3>
-        <p>2022年06月12日（日）</p>
-        <p class="text-sm">10:00 ~ 12:00</p>
-      </div>
-      <div class="text-right">
-        <div class="text-center">
-          <p class="text-orange-300 font-bold">未回答</p>
-          <p class="text-orange-300 font-bold">期限 06月12日12時</p>
-        </div>
-        <div class="flex text-right">
-          <p class="text-xl text-rght">15</p>
-          <p>人参加 ></p>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-between drop-shadow-md bg-white rounded-md pt-5 pb-5 px-3 mb-5">
-      <div class="">
-        <h3 class="font-bold text-xl">POSSE①かだサポ</h3>
-        <p>2022年06月12日（日）</p>
-        <p class="text-sm">10:00 ~ 12:00</p>
-      </div>
-      <div class="text-right">
-        <div class="text-center">
-          <p class="text-orange-300 font-bold">未回答</p>
-          <p class="text-orange-300 font-bold">期限 06月12日12時</p>
-        </div>
-        <div class="flex text-right">
-          <p class="text-xl text-rght">15</p>
-          <p>人参加 ></p>
-        </div>
-      </div>
-    </div>
+<body>
+<h1>My Todo List</h1>
+<div id="app" class="container">
+  <ul>
+    <li v-for="todo in todos">
+      {{ todo }}
+    </li>
+  </ul>
+</div>
+<form action="">
+  <input type="text">
+  <input type="submit" value="Add">
+</form>
 
-    </section>
-
-  </section>
-</main>
-<footer class="fixed bottom-0 w-full text-center">
-  <div class="flex mx-auto w-full md:w-4/5">
-    <button class="w-1/2 bg-blue-800 text-center text-white text-xl py-5">参加予約(未回答)</button>
-    <button class="w-1/2 bg-yellow-500 text-center text-white text-xl py-5">今日の出欠</button>
-  </div>
-  </footer>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
-<script src="https://cdn.tailwindcss.com"></script>
