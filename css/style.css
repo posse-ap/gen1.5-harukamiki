@@ -3,5 +3,39 @@ body {
 }
 
 .container{
-  width: 300px;
+  width: 400px;
+  margin: auto;
+}
+
+#app h1{
+  border-bottom: 1px solid black;
+  padding: 10px;
+  display: flex;
+}
+
+#app li{
+  padding: 3px;
+}
+
+#app input[type = "text"]{
+  padding: 3px;
+}
+
+#app button{
+  padding: 8px;
+}
+
+#app ul{
+  list-style: none;
+}
+
+#app li > span.done {
+  text-decoration:line-through;
+  color: #bbb;
+}
+
+.info {
+  color: #bbb;
+  font-size: 12px;
+  
 }
