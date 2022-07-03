@@ -131,7 +131,16 @@
     constructor(canvas){
       this.canvas = canvas;
       this.ctx = this.canvas.getContext('2d');
-      this.ball = new Ball(this.canvas);
+//       this.ballcount = Math.floor(rand(2, 5));
+//       console.log(this.ballcount);
+//       for( let i = 1; i < this.ballcount+1; i++){
+//         this.ball[i] = new Ball(this.canvas);
+// // ERROR :main.js:137 Uncaught TypeError: Cannot set properties of undefined (setting '1');
+// //  →for文のなかでthis. 呼び出しできない
+//       }
+      this.ball1 = new Ball(this.canvas);
+      this.ball2 = new Ball(this.canvas);
+
       this.paddle = new Paddle(this.canvas, this);
       this.loop();
       this.isGameOver = false;
@@ -155,10 +164,11 @@
     };
 
     update(){
-      this.ball.update();
-      this.paddle.update(this.ball);
-
-      if(this.ball.getMissedStatus() === true){
+      this.ball1.update();
+      this.ball2.update();
+      this.paddle.update(this.ball1);
+      this.paddle.update(this.ball2);
+      if(this.ball1.getMissedStatus() === true && this.ball2.getMissedStatus() === true){
         this.isGameOver = true;
       }
     };
@@ -171,7 +181,8 @@
       }
 
       this.ctx.clearRect(0,0, this.canvas.width, this.canvas.height);
-      this.ball.draw();
+      this.ball1.draw();
+      this.ball2.draw();
       this.paddle.draw();
       this.drawScore();
     };
