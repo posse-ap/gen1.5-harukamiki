@@ -6,28 +6,30 @@
   }
 
   class Ball {
-    constructor(canvas){
-      this.canvas = canvas;
-      this.ctx = this.canvas.getContext('2d');
+    constructor(balls){
+      this.balls = balls;
+      this.canvas = this.balls.canvas;
+      this.paddle = this.balls.paddle;
+      this.base = this.balls.base;
+      this.ctx = this.canvas.getContext("2d");
       this.x = rand(30, 250);
       this.y = 30;
       this.r = 10;
       this.vx = rand(3,5) * (Math.random() < 0.5 ? 1 : -1);
       this.vy = rand(3,5);
-      this.isMissed = false;
+      this.visible = true;
     }
-
-    getMissedStatus(){
-      return this.isMissed;
-    }
-
-
     bounce(){
       this.vy *= -1;
     }
 
     reposition(paddleTop){
       this.y = paddleTop - this.r;
+    }
+
+    hide() {
+      this.visible = false;
+      this.vy = 0;
     }
 
     getX(){
@@ -37,16 +39,37 @@
     getY(){
       return this.y;
     }
+    
     getR(){
       return this.r;
     }
 
     update(){
+      const ballBottom = this.getY() + this.getR();
+      const paddleTop = paddle.y;
+      const ballTop = this.getY() - this.getR();
+      const paddleBottom = paddle.y + paddle.h;
+      const ballCenter = this.getX();
+      const paddleLeft = paddle.x;
+      const paddleRight = paddle.x + paddle.w;
+      
+      if(
+        ballBottom > paddleTop &&
+        ballTop < paddleBottom &&
+        ballCenter > paddleLeft &&
+        ballCenter < paddleRight
+      ){
+        this.bounce();
+        this.reposition(paddleTop);
+        this.base.addScore();
+      }
+
       this.x += this.vx;
       this.y += this.vy;
 
-      if(this.y - this.r > this.canvas.height){
-        this.isMissed = true;
+      if(this.y - this.r > this.canvas.height && this.visible){ //visibleは何の役目？
+        this.balls.ballGameOverCount();
+        this.hide();
       }
 
       if(
@@ -72,10 +95,9 @@
   }
 
   class Paddle{
-    constructor(canvas, game){
+    constructor(canvas){
       this.canvas = canvas;
-      this.game = game;
-      this.ctx = this.canvas.getContext('2d');
+      this.ctx = this.canvas.getContext("2d");
       this.w = 60;
       this.h = 16;
       this.x = this.canvas.width / 2 - (this.w/2);
@@ -90,26 +112,7 @@
       });
     }
 
-    update(ball){
-      const ballBottom = ball.getY() + ball.getR();
-      const paddleTop = this.y;
-      const ballTop = ball.getY() - ball.getR();
-      const paddleBottom = this.y + this.h;
-      const ballCenter = ball.getX();
-      const paddleLeft = this.x;
-      const paddleRight = this.x + this.w;
-      
-      if(
-        ballBottom > paddleTop &&
-        ballTop < paddleBottom &&
-        ballCenter > paddleLeft &&
-        ballCenter < paddleRight
-      ){
-        ball.bounce();
-        ball.reposition(paddleTop);
-        this.game.addScore();
-      }
-
+    update(){
       const rect = this.canvas.getBoundingClientRect();
       this.x = this.mouseX- rect.left - (this.w / 2);
 
@@ -127,28 +130,48 @@
     }
   };
 
-  class Game{
-    constructor(canvas){
+  class Balls { 
+    constructor(ballCount, canvas, paddle, base){
+      this.ballCount = ballCount;
       this.canvas = canvas;
-      this.ctx = this.canvas.getContext('2d');
-//       this.ballcount = Math.floor(rand(2, 5));
-//       console.log(this.ballcount);
-//       for( let i = 1; i < this.ballcount+1; i++){
-//         this.ball[i] = new Ball(this.canvas);
-// // ERROR :main.js:137 Uncaught TypeError: Cannot set properties of undefined (setting '1');
-// //  →for文のなかでthis. 呼び出しできない
-//       }
-      this.ball1 = new Ball(this.canvas);
-      this.ball2 = new Ball(this.canvas);
-
-      this.paddle = new Paddle(this.canvas, this);
-      this.loop();
-      this.isGameOver = false;
-      this.score = 0;
+      this.paddle = paddle;
+      this.base = base;
+      this.ballArray = [];
+      for (let i = 1; i <= this.ballCount; i++){
+        this.ballArray.push(new Ball(this));
+      }
     }
 
-    addScore(){
-      this.score++;
+    ballGameOverCount(){
+      this.ballCount--;
+    }
+
+    update(){
+      this.ballArray.forEach((ball) => {
+        console.log(ball);
+        ball.update();
+      });
+
+      if (this.ballCount === 0){
+        this.base.gameOver();
+      };
+    }
+
+    draw(){
+      this.ballArray.forEach((ball) => {
+        ball.draw();
+      });
+    }
+  }
+
+  class Game{
+    constructor(canvas, paddle, balls, base){
+      this.canvas = canvas;
+      this.paddle = paddle;
+      this.base = base;
+      this.balls = balls;
+      this.ctx = this.canvas.getContext("2d");
+      this.loop();
     }
 
     loop(){
@@ -164,25 +187,18 @@
     };
 
     update(){
-      this.ball1.update();
-      this.ball2.update();
-      this.paddle.update(this.ball1);
-      this.paddle.update(this.ball2);
-      if(this.ball1.getMissedStatus() === true && this.ball2.getMissedStatus() === true){
-        this.isGameOver = true;
-      }
+      this.balls.update();
+      this.paddle.update(this.balls);
     };
 
-
     draw(){
-      if(this.isGameOver){
+      if(this.base.isGameOver){
         this.drawGameOver();
         return;
       }
 
       this.ctx.clearRect(0,0, this.canvas.width, this.canvas.height);
-      this.ball1.draw();
-      this.ball2.draw();
+      this.balls.draw();
       this.paddle.draw();
       this.drawScore();
     };
@@ -196,15 +212,34 @@
     drawScore(){
       this.ctx.font = '20px Arial';
       this.ctx.fillStyle = '#fdfdfd';
-      this.ctx.fillText(this.score, 10, 25);
+      this.ctx.fillText(this.base.score, 10, 25);
     }
   }
 
-  const canvas = document.querySelector('canvas');
-  if(typeof canvas.getContext === 'undefined'){
+  class Base{
+    constructor() {
+      this.isGameOver = false;
+      this.score = 0;
+    }
+
+    addScore() {
+      this.score++;
+    }
+
+    gameOver() {
+      this.isGameOver = true;
+    }
+  }
+
+  const canvas = document.querySelector("canvas");
+  if (typeof canvas.getContext === "undefined") {
     return;
-  };
+  }
 
+  const ballCount = Math.floor(rand(3, 6));
+  const paddle = new Paddle(canvas);
+  const base = new Base(canvas);
+  const balls = new Balls(ballCount, canvas, paddle, base);
+  const game = new Game(canvas, paddle, balls, base);
 
-  new Game(canvas);
-})();
+  })();
